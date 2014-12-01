@@ -20,4 +20,9 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function showCategory()
+	{
+		return View::make('category');
+	}
+
 }

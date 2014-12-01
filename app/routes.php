@@ -15,3 +15,6 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::get('category', array('uses' => 'HomeController@showCategory'));
