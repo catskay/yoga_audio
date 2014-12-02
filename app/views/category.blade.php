@@ -57,6 +57,7 @@
         <h4 class="modal-title" id="myModalLabel">Download Audio</h4>
       </div>
       <div class="modal-body">
+      	<p>Description here</p>
         <a>click here to download audio file...</a>
       </div>
       <div class="modal-footer">
