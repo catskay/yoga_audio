@@ -15,6 +15,9 @@ class CreateExperiencesTable extends Migration {
 		Schema::create('experiences', function(Blueprint $table)
 		{
 			$table->increments('eid');
+
+			$table->string('ename',50);
+			$table->string('notes',1000);
                         
             $table->unsignedInteger('uid');
             $table->foreign('uid')->references('uid')->on('users');

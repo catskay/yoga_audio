@@ -15,6 +15,8 @@ class CreateCategoriesTable extends Migration {
 		Schema::create('categories', function(Blueprint $table)
 		{
 			$table->increments('cid');
+
+			$table->string('cname',50);
                         
             $table->string('audio_index',50);
 

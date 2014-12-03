@@ -22,10 +22,14 @@ class HomeController extends BaseController {
 
 	public function showCategory()
 	{
-		/*$arr = array();
-		$selCateg = Input::get('categ');
-		array_push($ssArr[$subsection->ssname],$method);*/
-		return View::make('category');
+		$subcat = array();
+		$categories = Category::all();
+
+		foreach($categories as $cat){
+			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
+		}
+		//$arr = array('categories' => $categories, 'subcategories' => $subcat);
+		return View::make('category')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
 	public function showLogin()
