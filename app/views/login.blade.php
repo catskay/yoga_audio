@@ -56,7 +56,7 @@
 
             <div class="col-md-4">
                 <div>
-                    <a href="/yoga_audio/public/dashboard">  <button type="button" class="btn btn-danger" style="float:right">First Time User?</button> </a>
+                    <a href="dashboard">  <button type="button" class="btn btn-danger" style="float:right">First Time User?</button> </a>
                     <br><br>
                 </div>
                 <div class="login-panel panel panel-default">

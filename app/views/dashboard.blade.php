@@ -37,7 +37,7 @@
 
             <div class="col-md-4">
                 <div class="panel panel-padded">
-                    <a href="/yoga_audio/public/category"><h3>Categories</h3></a>
+                    <a href="category"><h3>Categories</h3></a>
 
                     {{Form::open(array('action' => 'HomeController@showCategory')) }}
                     {{Form::hidden('categ', 'health') }}
