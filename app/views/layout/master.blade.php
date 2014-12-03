@@ -35,7 +35,7 @@
 <body>
     <table>
         <tr>
-            <td>{{ HTML::image('img/amrit-yoga-logo.gif') }}</td>
+            <td><a href="/yoga_audio/public">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
         </tr>
     </table>                            
 
@@ -49,7 +49,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/yoga/public/dashboard">Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -76,25 +75,8 @@
 
 
 
-        @yield('content')
+    @yield('content')
 
-
-    <!-- jQuery Version 1.11.0 -->
-    {{ HTML::script('js/jquery-1.11.0.js')}}
-
-    <!-- Bootstrap Core JavaScript -->
-    {{ HTML::script('js/bootstrap.min.js') }}
-
-    <!-- Metis Menu Plugin JavaScript -->
-    {{ HTML::script('js/plugins/metisMenu/metisMenu.min.js') }}
-
-    <!-- DataTables JavaScript -->
-    {{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
-    {{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
-
-    <!-- Custom Theme JavaScript -->
-    {{ HTML::script('js/sb-admin-2.js') }}
-    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -107,12 +89,6 @@
     <script src="js/jquery.multi-select.js" type="text/javascript"></script>
     <script src="js/application.js" type="text/javascript"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-    </script>
 
 </body>
 </html>
