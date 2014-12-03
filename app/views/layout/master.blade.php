@@ -35,7 +35,7 @@
 <body>
     <table>
         <tr>
-            <td><a href="/yoga_audio/public">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
+            <td><a href="public">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
         </tr>
     </table>                            
 

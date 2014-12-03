@@ -36,7 +36,7 @@
     <div class="row">
         <div class="top-container">
             <div class="col-md-4">
-                {{ HTML::image('img/amrit-yoga-logo.gif') }}
+                <td><a href="login">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
             </div>
             <div class="col-md-4">
                 <h1 align="center"> <br><br><br><br> Categories </h1>
