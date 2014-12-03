@@ -425,29 +425,40 @@
         ]
     },
     {
-        "name": "nikic/php-parser",
-        "version": "v0.9.5",
-        "version_normalized": "0.9.5.0",
+        "name": "symfony/event-dispatcher",
+        "version": "v2.6.0",
+        "version_normalized": "2.6.0.0",
+        "target-dir": "Symfony/Component/EventDispatcher",
         "source": {
             "type": "git",
-            "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb"
+            "url": "https://github.com/symfony/EventDispatcher.git",
+            "reference": "697331d4ac78668cf6d21a2bb009b3faae92814f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ef70767475434bdb3615b43c327e2cae17ef12eb",
-            "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb",
+            "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/697331d4ac78668cf6d21a2bb009b3faae92814f",
+            "reference": "697331d4ac78668cf6d21a2bb009b3faae92814f",
             "shasum": ""
         },
         "require": {
-            "ext-tokenizer": "*",
-            "php": ">=5.2"
+            "php": ">=5.3.3"
         },
-        "time": "2014-07-23 18:24:17",
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "~2.0",
+            "symfony/dependency-injection": "~2.6",
+            "symfony/expression-language": "~2.6",
+            "symfony/stopwatch": "~2.2"
+        },
+        "suggest": {
+            "symfony/dependency-injection": "",
+            "symfony/http-kernel": ""
+        },
+        "time": "2014-11-28 10:00:40",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "0.9-dev"
+                "dev-master": "2.6-dev"
             }
         },
         "installation-source": "dist",
@@ -1515,44 +1526,29 @@
         ]
     },
     {
-        "name": "symfony/security-core",
-        "version": "v2.5.7",
-        "version_normalized": "2.5.7.0",
-        "target-dir": "Symfony/Component/Security/Core",
+        "name": "symfony/filesystem",
+        "version": "v2.6.0",
+        "version_normalized": "2.6.0.0",
+        "target-dir": "Symfony/Component/Filesystem",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/security-core.git",
-            "reference": "5e5af15ff3451fd6a828600a460ec44fb331bc75"
+            "url": "https://github.com/symfony/Filesystem.git",
+            "reference": "6f7c7e42f20ee200d8ac5d2ec1d2a524138305e0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/security-core/zipball/5e5af15ff3451fd6a828600a460ec44fb331bc75",
-            "reference": "5e5af15ff3451fd6a828600a460ec44fb331bc75",
+            "url": "https://api.github.com/repos/symfony/Filesystem/zipball/6f7c7e42f20ee200d8ac5d2ec1d2a524138305e0",
+            "reference": "6f7c7e42f20ee200d8ac5d2ec1d2a524138305e0",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "require-dev": {
-            "ircmaxell/password-compat": "1.0.*",
-            "psr/log": "~1.0",
-            "symfony/event-dispatcher": "~2.1",
-            "symfony/expression-language": "~2.4",
-            "symfony/http-foundation": "~2.4",
-            "symfony/validator": "~2.5"
-        },
-        "suggest": {
-            "ircmaxell/password-compat": "For using the BCrypt password encoder in PHP <5.5",
-            "symfony/event-dispatcher": "",
-            "symfony/expression-language": "For using the expression voter",
-            "symfony/http-foundation": "",
-            "symfony/validator": "For using the user password constraint"
-        },
-        "time": "2014-11-20 13:22:25",
+        "time": "2014-11-16 17:28:09",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.5-dev"
+                "dev-master": "2.6-dev"
             }
         },
         "installation-source": "dist",
