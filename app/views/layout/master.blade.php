@@ -49,6 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="/yoga_audio/public/dashboard">Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 

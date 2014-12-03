@@ -25,7 +25,7 @@ body {
 }
 
 .top-container {
-    padding: 5px;
+    padding: 10px 30px 5px 30px;
     background-color: #f2dffb5;
 }
 
@@ -161,7 +161,7 @@ body {
 }
 
 .btn-success.btn-outline {
-    color: #5cb85c;
+    background-color: #d9534f;
 }
 
 .btn-info.btn-outline {
@@ -433,11 +433,25 @@ table.dataTable thead .sorting:after {
 }
 
 .panel-centered{
-    background-color: #f2dfb5;
+    background-color: transparent;
     text-align: center;
 }
 
 .panel-padded{
     padding-left: 10px;
+}
+
+.btn-red{
+    background-color:#be2126;
+    color:white;
+}
+
+.btn-red:hover{
+    background-color:#d9534f;
+    color:white;
+}
+
+.btn-redlink{
+    color:#be2126;
 }
 

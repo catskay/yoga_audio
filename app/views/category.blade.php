@@ -1,4 +1,4 @@
-@extends('layout.temp')
+@extends('layout.categlayout')
 
 @section('content')
 
