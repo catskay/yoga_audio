@@ -15,6 +15,8 @@ class CreateSubcategoriesTable extends Migration {
 		Schema::create('subcategories', function(Blueprint $table)
 		{
 			$table->increments('sid');
+
+			$table->string('sname',100);
                         
             $table->string('audio_index',50);
 

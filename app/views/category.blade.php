@@ -1,133 +1,78 @@
-@extends('layout.temp')
+@extends('layout.categlayout')
 
 @section('content')
 
 <div class="page-container">
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            Health and Restoration
-          </a>
-        </h4>
-      </div>
-      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-          <p>Healing after surgery, injury <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Preparation for, during and after chemotherapy, surgery, and other medical procedures <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Accepting Illness <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Energy and Vitality <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Exercising Brain and Attention (for Alzhemiers, Dementia and ADHD) <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingTwo">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Yoga Nidra for Kids
-          </a>
-        </h4>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-        <div class="panel-body">
-        	<a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingThree">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Stress
-          </a>
-        </h4>
-      </div>
-      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-        <div class="panel-body">
-          <p>Overwork <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Worry <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Relationships <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingFour">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            Anti-Aging
-          </a>
-        </h4>
-      </div>
-      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-        <div class="panel-body">
-          <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingFive">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-            Insomnia/Restful Sleep
-          </a>
-        </h4>
-      </div>
-      <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-        <div class="panel-body">
-          <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingSix">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-            Chronic Pain
-          </a>
-        </h4>
-      </div>
-      <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-        <div class="panel-body">
-          <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingSeven">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-            Habits and Addictions
-          </a>
-        </h4>
-      </div>
-      <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
-        <div class="panel-body">
-          <p>Smoking <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Overeating <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingEight">
-        <h4 class="panel-title">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-            Emotions
-          </a>
-        </h4>
-      </div>
-      <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
-        <div class="panel-body">
-          <p>Resolving Inner Conflict <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Depression <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Anxiety <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-          <p>Self-Acceptance/Self-Esteem <a href="#myModal" role="button" class="btn" data-toggle="modal">Download</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
 
+
+    @foreach($categories as $cat)
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id={{"heading".$cat->cid}}>
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href={{"#collapse".$cat->cid}} aria-expanded="false" aria-controls={{"#collapse".$cat->cid}}>
+            {{$cat->cname}}
+          </a>
+        </h4>
+      </div>
+      
+
+      <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
+        <div class="panel-body">
+          @if(count($subcategories[$cat->cid])<>0)
+            @foreach($subcategories[$cat->cid] as $subcat)
+              <p>{{$subcat->sname}} <a href={{"#subcat".$subcat->sid}} role="button" class="btn" data-toggle="modal">Download</a></p>
+            @endforeach
+          @else
+            <p>{{$cat->cname}} <a href={{"#cat".$cat->cid}} role="button" class="btn" data-toggle="modal">Download</a></p>
+          @endif
+        </div>
+      </div>
+      
+    </div>
+
+    @endforeach
+
+    <?php $arr = array(); ?>
+
+    @foreach($categories as $cat)
+
+      @if(count($subcategories[$cat->cid])<>0)
+        @foreach($subcategories[$cat->cid] as $subcat)
+          <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname)); ?>
+        @endforeach
+      @else
+        <?php array_push($arr,array('name'=>"cat".$cat->cid,'text'=>$cat->cname)); ?>
+      @endif
+
+    @endforeach
+
+    @foreach($arr as $contents)
+
+    <!-- Modal -->
+    <div class="modal fade" id={{$contents['name']}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Download {{$contents['text']}}</h4>
+          </div>
+          <div class="modal-body">
+            <p>Description here</p>
+            <a>click here to download audio file...</a>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @endforeach
+
+
+  
+   
    
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -147,6 +92,8 @@
       </div>
     </div>
   </div>
+
+</div>
 </div>
 
 

@@ -20,13 +20,13 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
+    <link href="css/welcome.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
+    
 
 </head>
 <body>
@@ -38,14 +38,22 @@
             <div class="col-md-4">
                 <h2> Yoga Nidra <br> <h4> This site provides a Yoga Nidra <br> experience based on your health needs </h4> </h2>
             </div>
+            <div class="col-md-4">
+                <a href="#myModal" style="float:right" role="button" class="btn-link" data-toggle="modal">Sign In</a></p>
+            </div>
         </div>
     </div>
 
     <div class="page-container">
         <div class="row">
-            <div class="col-md-8">
-                {{ HTML::image('img/yoga.png') }}
-
+            <div class="col-lg-12">
+                <div>
+                    <a href="category">  <button type="button" class="btn btn-red" style="float:right">First Time User?</button> </a>
+                    <br><br>
+                </div>
+                <div class="panel-centered">
+                    {{ HTML::image('img/yoga.png') }}
+                </div>
                 <div class="panel panel-centered">
                     <p><b>Imagine</b> your life unfolding as you always wanted.</p>
                     <p><b>See yourself</b> letting go of the past.</p>
@@ -53,16 +61,22 @@
                     <p><b>Picture a life of relaxed acceptance</b> and fulfillment beyond your wildest dreams.</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="col-md-4">
-                <div>
-                    <a href="dashboard">  <button type="button" class="btn btn-danger" style="float:right">First Time User?</button> </a>
-                    <br><br>
-                </div>
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
+    <div class="col-md-4">
+        <div>
+            <a href="dashboard">  <button type="button" class="btn btn-danger" style="float:right">First Time User?</button> </a>
+            <br><br>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Please sign in</h4>
+                  </div>
+                  <div class="modal-body">
                     <div class="panel-body">
                         {{ Form::open(array('url' => 'login')) }}
                         <form role="form">
@@ -79,40 +93,47 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                               <input type="submit" value="Login" class="btn btn-lg btn-success btn-block">
+                                <input type="submit" value="Login" class="btn btn-lg btn-red btn-block">
                             </fieldset>
-                        {{ Form::close() }}
+                            {{ Form::close() }}
+                        </form>
                     </div>
                     <p>
                         {{ $errors->first('email') }}
                         {{ $errors->first('password') }}
                     </p>
-            </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
-        </div>
-    </div>                        
 
 
 
-    
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
 
-    <script src="js/jquery.tinysort.js" type="text/javascript"></script>
-    <script src="js/jquery.quicksearch.js" type="text/javascript"></script>
-    <script src="js/jquery.multi-select.js" type="text/javascript"></script>
-    <script src="js/application.js" type="text/javascript"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-    </script>
+<!-- Custom Theme JavaScript -->
+<script src="js/sb-admin-2.js"></script>
+
+<script src="js/jquery.tinysort.js" type="text/javascript"></script>
+<script src="js/jquery.quicksearch.js" type="text/javascript"></script>
+<script src="js/jquery.multi-select.js" type="text/javascript"></script>
+<script src="js/application.js" type="text/javascript"></script>
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+$(document).ready(function() {
+    $('#dataTables-example').dataTable();
+});
+</script>
 
 </body>
 </html>

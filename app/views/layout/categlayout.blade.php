@@ -27,16 +27,22 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
     <link rel=stylesheet type="text/css" href="css/layout.css">
-
+    <link href="css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/application.css" media="screen" rel="stylesheet" type="text/css">
 
 
 </head>
 <body>
-    <table>
-        <tr>
-            <td><a href="/yoga_audio/public">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
-        </tr>
-    </table>                            
+    <div class="row">
+        <div class="top-container">
+            <div class="col-md-4">
+                <td><a href="login">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
+            </div>
+            <div class="col-md-4">
+                <h1 align="center"> <br><br><br><br> Categories </h1>
+            </div>
+        </div>
+    </div>                            
 
     <div id="wrapper">
         <!-- Navigation -->
@@ -75,10 +81,8 @@
 
 
 
-        @yield('content')
+    @yield('content')
 
-
-    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
