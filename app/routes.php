@@ -25,3 +25,10 @@ Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
 Route::get('category', array('uses' => 'HomeController@showCategory'));
+
+Route::get('test', array('uses' => 'HomeController@showTest'));
+Route::post('test', array('uses' => 'HomeController@showTest'));
+
+
+Route::get('merge', array('uses' => 'HomeController@merge'));
+Route::post('merge', array('uses' => 'HomeController@merge'));

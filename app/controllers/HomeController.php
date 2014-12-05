@@ -92,4 +92,16 @@ class HomeController extends BaseController {
 			Session::flush();
 			return Redirect::to('login'); // redirect the user to the login screen
 		}
+
+		public function merge(){
+			if(Input::has('submitted')){
+				echo "Starting ffmpeg...\n\n";
+				echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/input1.mp3|/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/input2.mp3' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/output.mp3");
+				echo "Done.\n";
+			}
+		}
+
+		public function showTest(){
+			return View::make('testaudio');
+		}
 }
