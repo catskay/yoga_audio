@@ -26,6 +26,7 @@ Route::get('home', array('uses' => 'HomeController@showHome'));
 Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
 Route::get('category', array('uses' => 'HomeController@showCategory'));
+Route::post('category', array('uses' => 'HomeController@showPayment'))
 
 Route::get('payment', array('uses' => 'HomeController@showPayment'));
 Route::post('payment', array('before' => 'administrator','uses' => 'HomeController@doLogin'));
@@ -36,13 +37,23 @@ Route::filter('administrator', function(){
 	}
 });
 
+
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
 
-Route::get('download', array('uses' => 'HomeController@showDownload'));
 
+Route::get('addaudio', array('uses' => 'HomeController@showAddAudio'));
+
+Route::get('createaudio', array('uses' => 'HomeController@showCreateAudio'));
+
+Route::get('selection', array('uses' => 'AudioController@showSelect'));
+Route::post('selection', array('uses' => 'AudioController@showSelect'));
+
+
+Route::get('download', array('uses' => 'HomeController@showDownload'));
+Route::post('download', array('uses' => 'HomeController@showDownload'));
 
 Route::get('test', array('uses' => 'HomeController@showTest'));
 Route::post('test', array('uses' => 'HomeController@showTest'));
 
-Route::get('merge', array('uses' => 'HomeController@merge'));
-Route::post('merge', array('uses' => 'HomeController@merge'));
+Route::get('merge', array('uses' => 'AudioController@merge'));
+Route::post('merge', array('uses' => 'AudioController@merge'));

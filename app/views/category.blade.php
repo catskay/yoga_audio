@@ -57,7 +57,11 @@
           </div>
           <div class="modal-body">
             <p>Description here</p>
-            <a href="payment"><button type="button" class="btn-link">Click here to purchase audio file</button></a>
+            {{Form::open(array('action' => 'HomeController@showPayment')); }}
+            {{Form::hidden('categName', $contents['text']) }}
+            {{Form::hidden('categId', $contents['name']) }}
+            {{Form::submit('Click here to purchase audio file', array('class' => 'btn btn-link'));}}
+            {{Form::close() }}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

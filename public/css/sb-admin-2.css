@@ -44,6 +44,7 @@ body {
 
 .panel-padded{
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 @media(min-width:768px) {
@@ -467,5 +468,16 @@ table.dataTable thead .sorting:after {
 
 .btn-redlink{
     color:#be2126;
+}
+
+.optionGroup
+{
+    font-weight:bold;
+    font-style:italic;
+}
+
+.optionChild
+{
+    padding-left:15px;
 }
 
