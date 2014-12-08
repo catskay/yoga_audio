@@ -5,6 +5,7 @@
 <div class="row">
   <div class="panel-centered">
     <h2>Categories</h2>
+    <h5>Select a category below to view and download available experiences</h5>
   </div>
 </div>
 

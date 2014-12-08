@@ -39,7 +39,7 @@
                 <h2> Yoga Nidra <br> <h4> This site provides a Yoga Nidra <br> experience based on your health needs </h4> </h2>
             </div>
             <div class="col-md-4">
-                <a href="#myModal" style="float:right" role="button" class="btn-link" data-toggle="modal">Sign In</a></p>
+                <a href="#login" style="float:right" role="button" class="btn-link" data-toggle="modal">Sign In</a></p>
             </div>
         </div>
     </div>
@@ -65,19 +65,15 @@
     </div>
 
     <div class="col-md-4">
-        <div>
-            <a href="dashboard">  <button type="button" class="btn btn-danger" style="float:right">First Time User?</button> </a>
-            <br><br>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
+        <br><br>
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Please sign in</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="panel-body">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="loginLabel">Please sign in</h4>
+                    </div>
+                    <div class="modal-body">
                         {{ Form::open(array('url' => 'login')) }}
                         <form role="form">
                             <fieldset>
@@ -97,23 +93,18 @@
                             </fieldset>
                             {{ Form::close() }}
                         </form>
+                        <p>
+                            {{ $errors->first('email') }}
+                            {{ $errors->first('password') }}
+                        </p>
                     </div>
-                    <p>
-                        {{ $errors->first('email') }}
-                        {{ $errors->first('password') }}
-                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
-
-
-
+            </div>
+        </div>
+    </div>
 
 
 
