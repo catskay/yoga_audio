@@ -60,7 +60,14 @@ class HomeController extends BaseController {
 
 	public function showAdmin()
 	{
-		return View::make('admin');
+		$subcat = array();
+		$categories = Category::all();
+
+		foreach($categories as $cat){
+			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
+		}
+		//$arr = array('categories' => $categories, 'subcategories' => $subcat);
+		return View::make('admin')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
 	public function showDownload()
