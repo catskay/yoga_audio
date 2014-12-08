@@ -26,7 +26,7 @@ Route::get('home', array('uses' => 'HomeController@showHome'));
 Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
 Route::get('category', array('uses' => 'HomeController@showCategory'));
-Route::post('category', array('uses' => 'HomeController@showPayment'))
+Route::post('category', array('uses' => 'HomeController@showPayment'));
 
 Route::get('payment', array('uses' => 'HomeController@showPayment'));
 Route::post('payment', array('before' => 'administrator','uses' => 'HomeController@doLogin'));
