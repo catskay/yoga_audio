@@ -13,11 +13,12 @@
 
 Route::get('/', function()
 {
-	return View::make('login');
+	return View::make('home');
 });
 
 // route to show the login form
-Route::get('login', array('uses' => 'HomeController@showLogin'));
+
+Route::get('home', array('uses' => 'HomeController@showHome'));
 
 // route to process the form
 Route::post('login', array('uses' => 'HomeController@doLogin'));
@@ -26,9 +27,17 @@ Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
 Route::get('category', array('uses' => 'HomeController@showCategory'));
 
+Route::get('payment', array('uses' => 'HomeController@showPayment'));
+
+Route::get('admin', array('uses' => 'HomeController@showAdmin'));
+
+Route::get('addaudio', array('uses' => 'HomeController@showAddAudio'));
+
+Route::get('createaudio', array('uses' => 'HomeController@showCreateAudio'));
+
+
 Route::get('test', array('uses' => 'HomeController@showTest'));
 Route::post('test', array('uses' => 'HomeController@showTest'));
-
 
 Route::get('merge', array('uses' => 'HomeController@merge'));
 Route::post('merge', array('uses' => 'HomeController@merge'));

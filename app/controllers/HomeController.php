@@ -32,15 +32,35 @@ class HomeController extends BaseController {
 		return View::make('category')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
-	public function showLogin()
+	public function showHome()
 	{
 		// show the form
-		return View::make('login');
+		return View::make('home');
 	}
 
 	public function showDashboard()
 	{
 		return View::make('dashboard');
+	}
+
+	public function showPayment()
+	{
+		return View::make('payment');
+	}
+
+	public function showAdmin()
+	{
+		return View::make('admin');
+	}
+
+	public function showCreateAudio()
+	{
+		return View::make('createaudio');
+	}
+
+	public function showAddAudio()
+	{
+		return View::make('addaudio');
 	}
 
 	public function doLogin()

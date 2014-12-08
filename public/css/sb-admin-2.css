@@ -29,6 +29,13 @@ body {
     background-color: #f2dffb5;
 }
 
+.lined-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #31030e;
+    min-height: 200px;
+}
+
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;

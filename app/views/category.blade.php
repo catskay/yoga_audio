@@ -59,7 +59,7 @@
           </div>
           <div class="modal-body">
             <p>Description here</p>
-            <a>click here to download audio file...</a>
+            <a href="payment"><button type="button" class="btn-link">click here to download audio file...</button></a>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -84,7 +84,7 @@
         </div>
         <div class="modal-body">
         	<p>Description here</p>
-          <a>click here to download audio file...</a>
+          <a href="payment"><button type="button" class="btn-link">click here to download audio file...</button></a>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
