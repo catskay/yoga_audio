@@ -28,11 +28,12 @@ Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 Route::get('category', array('uses' => 'HomeController@showCategory'));
 
 Route::get('payment', array('uses' => 'HomeController@showPayment'));
+Route::post('payment', array('uses' => 'HomeController@showPayment'));
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
 
 Route::get('download', array('uses' => 'HomeController@showDownload'));
-
+Route::post('download', array('uses' => 'HomeController@showDownload'));
 
 Route::get('test', array('uses' => 'HomeController@showTest'));
 Route::post('test', array('uses' => 'HomeController@showTest'));

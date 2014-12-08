@@ -1,12 +1,12 @@
-@extends('layout.master')
+@extends('layout.dashboardlayout')
 
 @section('content')
 
     <div class="page-container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-12">
                 <h1 class="page-header">Dashboard</h1>
-                <button type="button" class="btn btn-red" style="float:right">CREATE NEW</button> 
+                <a href="category"><button type="button" class="btn btn-red" style="float:right">Click here to view all experiences</button></a> 
                 <br><br>
                 <div class="panel panel-default">
                     <!-- /.panel-heading -->
@@ -32,21 +32,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="panel panel-padded">
-                    <a href="category"><h3>Categories</h3></a>
-
-                    <p>Health and Restoration</p>
-                    <p>Yoga Nidra for Kids</p>
-                    <p>Stress</p>
-                    <p>Anti-Aging</p>
-                    <p>Insomnia/Restful Sleep</p>
-                    <p>Chronic Pain</p>
-                    <p>Habits and Addictions</p>
-                    <p>Emotions</p>
                 </div>
             </div>
         </div>

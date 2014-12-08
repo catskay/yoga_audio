@@ -46,8 +46,6 @@
                                 <input class="form-control" style="width:450px">
                                 <label>Password</label>
                                 <input class="form-control" style="width:450px">
-                                <label>Retype password</label>
-                                <input class="form-control" style="width:450px">
                                 <br>
                                 <button id="submitRegister" class="btn btn-red">Submit</button>
                             </div>
@@ -60,14 +58,19 @@
 			<div class="lined-container">
 				<h4>Cart summary</h4>
 				{{ HTML::image('img/audio-file.jpg') }}
-				<p style="float:right">Health and Restoration: Healing after surgery</p>
+				<p style="float:right">{{ $categtext }}</p>
                 <br><br>
                 <p style="float:right"><b>Total: </b> $5.00</p>
                 <br><br>
-                <a href="download"><button id="checkout" class="btn btn-red" style="float:right">Checkout</button></a>
+                {{Form::open(array('action' => 'HomeController@showDownload')); }}
+                {{Form::hidden('categName', $categtext) }}
+                {{Form::hidden('categId', $categnum) }}
+                {{Form::submit('Checkout', array('class' => 'btn btn-red'));}}
+                {{Form::close()}}
                 <br>
 			</div>
 		</div>
+        
 	</div>
 </div>
 
