@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AudioController' => $baseDir . '/app/controllers/AudioController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Category' => $baseDir . '/app/models/Category.php',
     'CategoryTableSeeder' => $baseDir . '/app/database/seeds/CategoryTableSeeder.php',
@@ -21,8 +22,11 @@ return array(
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'MasterSeeder' => $baseDir . '/app/database/seeds/MasterSeeder.php',
+    'Method' => $baseDir . '/app/models/Method.php',
+    'Section' => $baseDir . '/app/models/Section.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Subcategory' => $baseDir . '/app/models/Subcategory.php',
+    'Subsection' => $baseDir . '/app/models/Subsection.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'User' => $baseDir . '/app/models/User.php',
     'UserTableSeeder' => $baseDir . '/app/database/seeds/UserTableSeeder.php',

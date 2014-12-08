@@ -12,7 +12,19 @@ class CreateMethodsTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('methods', function(Blueprint $table)
+		{
+			$table->increments('mid');
+                        
+            $table->string('mname', 50);
+			$table->unsignedInteger('ssid');
+			$table->foreign('ssid')->references('ssid')->on('subsections');
+			$table->string('text', 9000);
+
+			$table->string('editable',10);
+                        
+            $table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +34,7 @@ class CreateMethodsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('methods');
 	}
 
 }

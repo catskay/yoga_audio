@@ -21,7 +21,7 @@ Route::get('/', function()
 Route::get('home', array('uses' => 'HomeController@showHome'));
 
 // route to process the form
-//Route::post('login', array('uses' => 'HomeController@doLogin'));
+Route::post('login', array('uses' => 'HomeController@doLogin'));
 
 Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
@@ -40,11 +40,6 @@ Route::filter('administrator', function(){
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
 Route::post('admin', array('uses' => 'HomeController@showAdmin'));
-
-
-Route::get('addaudio', array('uses' => 'HomeController@showAddAudio'));
-
-Route::get('createaudio', array('uses' => 'HomeController@showCreateAudio'));
 
 Route::get('selection', array('uses' => 'AudioController@showSelect'));
 Route::post('selection', array('uses' => 'AudioController@showSelect'));
