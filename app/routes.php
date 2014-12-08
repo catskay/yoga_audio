@@ -31,9 +31,7 @@ Route::get('payment', array('uses' => 'HomeController@showPayment'));
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
 
-Route::get('addaudio', array('uses' => 'HomeController@showAddAudio'));
-
-Route::get('createaudio', array('uses' => 'HomeController@showCreateAudio'));
+Route::get('download', array('uses' => 'HomeController@showDownload'));
 
 
 Route::get('test', array('uses' => 'HomeController@showTest'));

@@ -9,18 +9,20 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Login
                             </a>
                         </h4>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>Email</label>
                                 <input class="form-control" style="width:450px">
                                 <label>Password</label>
                                 <input class="form-control" style="width:450px">
+                                <br>
+                                <button id="submitLogin" class="btn btn-red">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -28,9 +30,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Register
-                        </a>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Register
+                            </a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -46,14 +48,13 @@
                                 <input class="form-control" style="width:450px">
                                 <label>Retype password</label>
                                 <input class="form-control" style="width:450px">
-                                <label>Password hint</label>
-                                <input class="form-control" style="width:450px">
-                                <p class="help-block">A word or phrase to remind you of your password</p>
+                                <br>
+                                <button id="submitRegister" class="btn btn-red">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
-    		</div>
+            </div>
         </div>
 		<div class="col-md-4">
 			<div class="lined-container">
@@ -63,10 +64,9 @@
                 <br><br>
                 <p style="float:right"><b>Total: </b> $5.00</p>
                 <br><br>
-                <button id="checkout" class="btn btn-red" style="float:right">Checkout</button>
+                <a href="download"><button id="checkout" class="btn btn-red" style="float:right">Checkout</button></a>
                 <br>
 			</div>
-            
 		</div>
 	</div>
 </div>

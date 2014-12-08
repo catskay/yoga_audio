@@ -1,10 +1,15 @@
-@extends('layout.categlayout')
+@extends('layout.master')
 
 @section('content')
 
+<div class="row">
+  <div class="panel-centered">
+    <h2>Categories</h2>
+  </div>
+</div>
+
 <div class="page-container">
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
 
     @foreach($categories as $cat)
     <div class="panel panel-default">
@@ -59,7 +64,7 @@
           </div>
           <div class="modal-body">
             <p>Description here</p>
-            <a href="payment"><button type="button" class="btn-link">click here to download audio file...</button></a>
+            <a href="payment"><button type="button" class="btn-link">Click here to purchase audio file</button></a>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

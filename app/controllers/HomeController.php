@@ -53,15 +53,11 @@ class HomeController extends BaseController {
 		return View::make('admin');
 	}
 
-	public function showCreateAudio()
+	public function showDownload()
 	{
-		return View::make('createaudio');
+		return View::make('download');
 	}
 
-	public function showAddAudio()
-	{
-		return View::make('addaudio');
-	}
 
 	public function doLogin()
 	{
