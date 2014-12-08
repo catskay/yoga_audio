@@ -64,6 +64,12 @@ class HomeController extends BaseController {
 			$sid = Input::get('subid');
 			Subcategory::where('sid', '=', $sid)->delete();
 		}
+		if(Input::has('catName')){
+			$cname = Input::get('catName');
+			$cat = new Category;
+			$cat->cname = $cname;
+			$cat->save();
+		}
 
 		$subcat = array();
 		$categories = Category::all();
