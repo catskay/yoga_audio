@@ -11,7 +11,7 @@
 
     <div class="page-container">
         <div class="row">
-            <button class="btn btn-red" style="float:right">Add new subcategory</button>
+            <a href = "selection"><button class="btn btn-red" style="float:right">Add new subcategory</button></a>
             <br><br>
         </div>
         <div class="row">
@@ -29,18 +29,14 @@
 
                   <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
                     <div class="panel-body">
-                      {{Form::open(array('action'=>'HomeController@showAdmin'))}}
-                        @if(count($subcategories[$cat->cid])<>0)
                             @foreach($subcategories[$cat->cid] as $subcat)
+                             {{Form::open(array('action'=>'HomeController@showAdmin'))}}
                               <p>{{$subcat->sname}} 
                                 {{Form::hidden('subid', $subcat->sid)}}
                                 {{Form::submit('Delete',['class'=>'btn btn-link'])}}
                               </p>
+                               {{Form::close()}}
                             @endforeach
-                        @else
-                            <p>{{$cat->cname}} <button role="button" class="btn btn-link">Delete</button></p>
-                      @endif
-                      {{Form::close()}}
                     </div>
                   </div>
                   
@@ -48,19 +44,6 @@
 
                 @endforeach
 
-                <?php $arr = array(); ?>
-
-                @foreach($categories as $cat)
-
-                  @if(count($subcategories[$cat->cid])<>0)
-                    @foreach($subcategories[$cat->cid] as $subcat)
-                      <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname)); ?>
-                    @endforeach
-                  @else
-                    <?php array_push($arr,array('name'=>"cat".$cat->cid,'text'=>$cat->cname)); ?>
-                  @endif
-
-                @endforeach
             </div>
         </div>
     </div>

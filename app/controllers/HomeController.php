@@ -62,9 +62,7 @@ class HomeController extends BaseController {
 	{
 		if(Input::has('subid')){
 			$sid = Input::get('subid');
-			echo "<script>alert('".$sid."')</script>";
-
-			// Subcategory::where('sid', '=', $sid)->delete();
+			Subcategory::where('sid', '=', $sid)->delete();
 		}
 
 		$subcat = array();
