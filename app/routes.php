@@ -39,6 +39,7 @@ Route::filter('administrator', function(){
 
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
+Route::post('admin', array('uses' => 'HomeController@showAdmin'));
 
 
 Route::get('addaudio', array('uses' => 'HomeController@showAddAudio'));

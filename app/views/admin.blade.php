@@ -29,13 +29,18 @@
 
                   <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
                     <div class="panel-body">
+                      {{Form::open(array('action'=>'HomeController@showAdmin'))}}
                         @if(count($subcategories[$cat->cid])<>0)
                             @foreach($subcategories[$cat->cid] as $subcat)
-                              <p>{{$subcat->sname}} <button role="button" class="btn btn-link">Delete</button></p>
+                              <p>{{$subcat->sname}} 
+                                {{Form::hidden('subid', $subcat->sid)}}
+                                {{Form::submit('Delete',['class'=>'btn btn-link'])}}
+                              </p>
                             @endforeach
                         @else
                             <p>{{$cat->cname}} <button role="button" class="btn btn-link">Delete</button></p>
                       @endif
+                      {{Form::close()}}
                     </div>
                   </div>
                   

@@ -47,7 +47,7 @@ class HomeController extends BaseController {
 		foreach($categories as $cat){
 			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
 		}
-		//$arr = array('categories' => $categories, 'subcategories' => $subcat);
+
 		return View::make('dashboard')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
@@ -60,13 +60,20 @@ class HomeController extends BaseController {
 
 	public function showAdmin()
 	{
+		if(Input::has('subid')){
+			$sid = Input::get('subid');
+			echo "<script>alert('".$sid."')</script>";
+
+			// Subcategory::where('sid', '=', $sid)->delete();
+		}
+
 		$subcat = array();
 		$categories = Category::all();
 
 		foreach($categories as $cat){
 			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
 		}
-		//$arr = array('categories' => $categories, 'subcategories' => $subcat);
+
 		return View::make('admin')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
