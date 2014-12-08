@@ -62,6 +62,7 @@ class HomeController extends BaseController {
 	public function doLogin()
 	{
 		Session::flush();
+		if(Input::get('submit')==='Login'){
 		// validate the info, create rules for the inputs
 		$rules = array(
 			'email'    => 'required|email', // make sure the email is an actual email
@@ -73,40 +74,96 @@ class HomeController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
-			return Redirect::to('login')
+			return Redirect::to('payment')
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 			} else {
 
 			// create our user data for the authentication
-				$userdata = array(
-					'email' 	=> Input::get('email'),
-					'password' 	=> Input::get('password')
-					);
+					$userdata = array(
+						'email' 	=> Input::get('email'),
+						'password' 	=> Input::get('password')
+						);
 
 			// attempt to do the login
-				if (Auth::attempt($userdata)) {
+					if (Auth::attempt($userdata)) {
 
 				// validation successful!
 				// redirect them to the secure section or whatever
 				// return Redirect::to('secure');
 
-					return Redirect::to('dashboard');
+						return Redirect::to('dashboard');
 
-				} else {	 	
+					} else {	 	
 
 				// validation not successful, send back to form	
-					return Redirect::to('login');
+						return Redirect::to('payment');
+
+					}
 
 				}
 
 			}
+			else{
+				if($this->register()){
+					return Redirect::to('dashboard');
+				}
+				else{
+					return Redirect::to('payment');
+				}
+			}
+				
 		}
 
 		public function doLogout(){
 			Auth::logout(); // log the user out of our application
 			Session::flush();
-			return Redirect::to('login'); // redirect the user to the login screen
+			return Redirect::to('home'); // redirect the user to the login screen
+		}
+
+		public function register(){
+
+			// validate the info, create rules for the inputs
+			$rules = array(
+			'regEmail' => 'required|email',
+			'regPass' => 'required|alphaNum|min:3'
+			);
+
+		// run the validation rules on the inputs from the form
+			$validator = Validator::make(Input::all(), $rules);
+
+		// if the validator fails, redirect back to the form
+			if ($validator->fails()) {
+				return Redirect::to('payment')
+				->withErrors($validator) // send back all errors to the login form
+				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+			} else{
+
+				$userdata = array(
+					'email' 	=> Input::get('regEmail'),
+					'password' 	=> Input::get('regPass')
+					);
+
+				$user = new User;
+				$user->name = Input::get('regFname').' '.Input::get('regLname');
+				$user->email = $userdata['email'];
+				$user->password = Hash::make($userdata['password']);
+				$user->save();
+
+
+				if (Auth::attempt($userdata)) {
+				// validation successful!
+				// redirect them to the secure section or whatever
+				// return Redirect::to('secure');
+
+					return true;
+
+				} else {	 	
+				// validation not successful, send back to form	
+					return false;
+
+				}
+			}
 		}
 
 		public function merge(){
@@ -120,4 +177,4 @@ class HomeController extends BaseController {
 		public function showTest(){
 			return View::make('testaudio');
 		}
-}
+	}

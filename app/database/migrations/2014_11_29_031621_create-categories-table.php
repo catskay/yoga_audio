@@ -17,8 +17,6 @@ class CreateCategoriesTable extends Migration {
 			$table->increments('cid');
 
 			$table->string('cname',50);
-                        
-            $table->string('audio_index',50);
 
 			$table->timestamps();                        
 

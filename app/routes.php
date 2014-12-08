@@ -21,13 +21,20 @@ Route::get('/', function()
 Route::get('home', array('uses' => 'HomeController@showHome'));
 
 // route to process the form
-Route::post('login', array('uses' => 'HomeController@doLogin'));
+//Route::post('login', array('uses' => 'HomeController@doLogin'));
 
 Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
 Route::get('category', array('uses' => 'HomeController@showCategory'));
 
 Route::get('payment', array('uses' => 'HomeController@showPayment'));
+Route::post('payment', array('before' => 'administrator','uses' => 'HomeController@doLogin'));
+
+Route::filter('administrator', function(){
+	if(Auth::check() && Auth::user()->email === 'kamini@kaminidesai.com'){
+		return Redirect::to('admin');
+	}
+});
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
 

@@ -14,15 +14,16 @@
                             </a>
                         </h4>
                     </div>
+                    {{Form::open(array('url' => 'payment')) }}
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" style="width:450px">
+                                <input class="form-control" name="email" style="width:450px">
                                 <label>Password</label>
-                                <input class="form-control" style="width:450px">
+                                <input class="form-control" name="password" type="password" style="width:450px">
                                 <br>
-                                <button id="submitLogin" class="btn btn-red">Submit</button>
+                                <input type="submit" name="submit" value="Login" class="btn btn-red">
                             </div>
                         </div>
                     </div>
@@ -39,17 +40,16 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>First Name</label>
-                                <input class="form-control" style="width:450px">
+                                <input class="form-control" name="regFname" style="width:450px">
                                 <label>Last Name</label>
-                                <input class="form-control" style="width:450px">
+                                <input class="form-control" name="regLname" style="width:450px">
                                 <label>Email</label>
-                                <input class="form-control" style="width:450px">
+                                <input class="form-control" name="regEmail" style="width:450px">
                                 <label>Password</label>
-                                <input class="form-control" style="width:450px">
-                                <label>Retype password</label>
-                                <input class="form-control" style="width:450px">
+                                <input class="form-control" name="regPass" type="password" style="width:450px">
                                 <br>
-                                <button id="submitRegister" class="btn btn-red">Submit</button>
+                                <input type="submit" name="submit" value="Register" class="btn btn-red">
+                                {{Form::close() }}
                             </div>
                         </div>
                     </div>
