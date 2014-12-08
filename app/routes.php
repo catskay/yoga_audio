@@ -35,9 +35,12 @@ Route::get('addaudio', array('uses' => 'HomeController@showAddAudio'));
 
 Route::get('createaudio', array('uses' => 'HomeController@showCreateAudio'));
 
+Route::get('selection', array('uses' => 'AudioController@showSelect'));
+Route::post('selection', array('uses' => 'AudioController@showSelect'));
+
 
 Route::get('test', array('uses' => 'HomeController@showTest'));
 Route::post('test', array('uses' => 'HomeController@showTest'));
 
-Route::get('merge', array('uses' => 'HomeController@merge'));
-Route::post('merge', array('uses' => 'HomeController@merge'));
+Route::get('merge', array('uses' => 'AudioController@merge'));
+Route::post('merge', array('uses' => 'AudioController@merge'));
