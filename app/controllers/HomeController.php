@@ -70,6 +70,10 @@ class HomeController extends BaseController {
 			$cat->cname = $cname;
 			$cat->save();
 		}
+		if(Input::has('categories')){
+			$cid = Input::get('categories');
+			Category::where('cid', '=', $cid)->delete();
+		}
 
 		$subcat = array();
 		$categories = Category::all();
