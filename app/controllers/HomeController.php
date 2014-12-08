@@ -40,12 +40,22 @@ class HomeController extends BaseController {
 
 	public function showDashboard()
 	{
-		return View::make('dashboard');
+
+		$subcat = array();
+		$categories = Category::all();
+
+		foreach($categories as $cat){
+			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
+		}
+		//$arr = array('categories' => $categories, 'subcategories' => $subcat);
+		return View::make('dashboard')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
 	public function showPayment()
 	{
-		return View::make('payment');
+		$categtext = Input::get('categName');
+		$categnum = Input::get('categId');
+		return View::make('payment')->with('categtext',$categtext)->with('categnum',$categnum);
 	}
 
 	public function showAdmin()
@@ -53,15 +63,13 @@ class HomeController extends BaseController {
 		return View::make('admin');
 	}
 
-	public function showCreateAudio()
+	public function showDownload()
 	{
-		return View::make('createaudio');
+		$categtext = Input::get('categName');
+		$categnum = Input::get('categId');
+		return View::make('download')->with('categtext',$categtext)->with('categnum',$categnum);
 	}
 
-	public function showAddAudio()
-	{
-		return View::make('addaudio');
-	}
 
 	public function doLogin()
 	{
