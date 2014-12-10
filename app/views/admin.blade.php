@@ -30,12 +30,8 @@
           <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
             <div class="panel-body">
               @foreach($subcategories[$cat->cid] as $subcat)
-              {{Form::open(array('action'=>'HomeController@showAdmin'))}}
-              <p>{{$subcat->sname}} 
-                {{Form::hidden('subid', $subcat->sid)}}
-                {{Form::submit('Delete',['class'=>'btn btn-link'])}}
-              </p>
-              {{Form::close()}}
+                <p>{{$subcat->sname}} 
+                <a href={{"#".$subcat->sid}} role="button" class="btn" data-toggle="modal">Delete</a></p>
               @endforeach
             </div>
 
@@ -43,6 +39,41 @@
 
         </div>
         @endforeach
+
+        <?php $arr = array(); ?>
+
+        @foreach($categories as $cat)
+
+            @foreach($subcategories[$cat->cid] as $subcat)
+              <?php array_push($arr,array('name'=>$subcat->sid,'text'=>$subcat->sname)); ?>
+            @endforeach
+
+        @endforeach
+
+        @foreach($arr as $contents)
+
+        <!-- Modal -->
+        <div class="modal fade" id={{$contents['name']}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$contents['text']}}</h4>
+              </div>
+              <div class="modal-body">
+                {{Form::open(array('action'=>'HomeController@showAdmin'))}}
+                {{Form::hidden('subid', $contents['name'])}}
+                {{Form::submit('Delete',['class'=>'btn btn-red'])}}
+                {{Form::close()}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
         <br>
         <br>
         {{Form::open(array('action'=>'HomeController@showAdmin'))}}
@@ -64,5 +95,7 @@
    </div>
  </div>
 </div>
+
+
 
 @stop

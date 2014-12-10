@@ -31,6 +31,9 @@ Route::post('category', array('uses' => 'HomeController@showPayment'));
 Route::get('payment', array('uses' => 'HomeController@showPayment'));
 Route::post('payment', array('before' => 'administrator','uses' => 'HomeController@doLogin'));
 
+Route::get('payment-loggedin', array('uses' => 'HomeController@showPaymentLoggedIn'));
+Route::get('payment-registered', array('uses' => 'HomeController@showPaymentRegistered'));
+
 Route::filter('administrator', function(){
 	if(Auth::check() && Auth::user()->email === 'kamini@kaminidesai.com'){
 		return Redirect::to('admin');
