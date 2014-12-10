@@ -16,9 +16,10 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('uid');
                         
-            $table->string('name', 32);
+            $table->string('name', 50);
 			$table->string('email', 320);
 			$table->string('password', 64);
+			$table->string('type', 32);
 
 			$table->string('remember_token', 100)->nullable();
 

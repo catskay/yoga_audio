@@ -88,3 +88,15 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('administrator', function(){
+	
+	if(Auth::check()){
+		
+		if(Auth::user()->email === 'kamini@kaminidesai.com'){
+			return Redirect::to('admin');
+		}
+	} 
+});
+

@@ -57,7 +57,7 @@ return array(
 			'host'      => '127.0.0.1',
 			'database'  => 'yoga_audio',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'ksabbfaikasd',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

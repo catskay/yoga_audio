@@ -115,7 +115,7 @@ class HomeController extends BaseController {
 				// validation successful!
 				// redirect them to the secure section or whatever
 				// return Redirect::to('secure');
-
+						
 						return Redirect::to('dashboard');
 
 					} else {	 	
