@@ -3,50 +3,99 @@
 @section('content')
 
 <div class="page-container">
+  <div class="row">
+    <div class="panel-centered">
+      <h2>Dashboard</h2>
+    </div>
+  </div>
+
+  <div class="page-container">
     <div class="row">
-      <div class="panel-centered">
-        <h2>Dashboard</h2>
-      </div>
+      <a href = "selection"><button class="btn btn-red" style="float:right">Add new subcategory</button></a>
+      <br><br>
     </div>
+    <div class="row">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-    <div class="page-container">
-        <div class="row">
-            <a href = "selection"><button class="btn btn-red" style="float:right">Add new subcategory</button></a>
-            <br><br>
-        </div>
-        <div class="row">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        @foreach($categories as $cat)
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id={{"heading".$cat->cid}}>
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href={{"#collapse".$cat->cid}} aria-expanded="false" aria-controls={{"#collapse".$cat->cid}}>
+                {{$cat->cname}}
+              </a>
+            </h4>
+          </div>
 
-                @foreach($categories as $cat)
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id={{"heading".$cat->cid}}>
-                    <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href={{"#collapse".$cat->cid}} aria-expanded="false" aria-controls={{"#collapse".$cat->cid}}>
-                        {{$cat->cname}}
-                      </a>
-                    </h4>
-                  </div>
-
-                  <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
-                    <div class="panel-body">
-                            @foreach($subcategories[$cat->cid] as $subcat)
-                             {{Form::open(array('action'=>'HomeController@showAdmin'))}}
-                              <p>{{$subcat->sname}} 
-                                {{Form::hidden('subid', $subcat->sid)}}
-                                {{Form::submit('Delete',['class'=>'btn btn-link'])}}
-                              </p>
-                               {{Form::close()}}
-                            @endforeach
-                    </div>
-                  </div>
-                  
-                </div>
-
-                @endforeach
-
+          <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
+            <div class="panel-body">
+              @foreach($subcategories[$cat->cid] as $subcat)
+                <p>{{$subcat->sname}} 
+                <a href={{"#".$subcat->sid}} role="button" class="btn" data-toggle="modal">Delete</a></p>
+              @endforeach
             </div>
+
+          </div>
+
         </div>
-    </div>
+        @endforeach
+
+        <?php $arr = array(); ?>
+
+        @foreach($categories as $cat)
+
+            @foreach($subcategories[$cat->cid] as $subcat)
+              <?php array_push($arr,array('name'=>$subcat->sid,'text'=>$subcat->sname)); ?>
+            @endforeach
+
+        @endforeach
+
+        @foreach($arr as $contents)
+
+        <!-- Modal -->
+        <div class="modal fade" id={{$contents['name']}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$contents['text']}}</h4>
+              </div>
+              <div class="modal-body">
+                {{Form::open(array('action'=>'HomeController@showAdmin'))}}
+                {{Form::hidden('subid', $contents['name'])}}
+                {{Form::submit('Delete',['class'=>'btn btn-red'])}}
+                {{Form::close()}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
+        <br>
+        <br>
+        {{Form::open(array('action'=>'HomeController@showAdmin'))}}
+        <p><b>Please enter a name for the new category: </b></p>
+        {{ Form::textarea('catName', null, ['placeholder' => 'category name', 'size'=>'50x1']) }}
+        {{Form::submit('Add',['class'=>'btn btn-link'])}}
+        {{Form::close()}}
+
+        <p><b>Please select a category: </b></p>
+        {{Form::open(array('action'=>'HomeController@showAdmin'))}}
+        <select name="categories" id = 'cat' onchange="change()">
+         @foreach($categories as $cat)
+         <option value={{$cat->cid}}>{{$cat->cname}}</option>
+         @endforeach    
+       </select>
+          {{Form::submit('Delete',['class'=>'btn btn-link'])}}
+       {{Form::close()}}
+     </div>
+   </div>
+ </div>
 </div>
+
+
 
 @stop

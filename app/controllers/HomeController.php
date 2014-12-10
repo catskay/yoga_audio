@@ -58,11 +58,44 @@ class HomeController extends BaseController {
 		return View::make('payment')->with('categtext',$categtext)->with('categnum',$categnum);
 	}
 
+	public function showPaymentLoggedIn()
+	{
+		if(Auth::check()){
+			$name = Auth::user()->name;
+			$email = Auth::user()->email;
+		}
+		$categtext = Input::get('categName');
+		$categnum = Input::get('categId');
+
+		return View::make('payment-loggedin')->with('name',$name)->with('email',$email)->with('categtext',$categtext)->with('categnum',$categnum);
+	}
+
+	public function showPaymentRegistered()
+	{
+		if(Auth::check()){
+			$name = Auth::user()->name;
+			$email = Auth::user()->email;
+		}
+		$categtext = Input::get('categName');
+		$categnum = Input::get('categId');
+		return View::make('payment-registered')->with('name',$name)->with('email',$email)->with('categtext',$categtext)->with('categnum',$categnum);
+	}
+
 	public function showAdmin()
 	{
 		if(Input::has('subid')){
 			$sid = Input::get('subid');
 			Subcategory::where('sid', '=', $sid)->delete();
+		}
+		if(Input::has('catName')){
+			$cname = Input::get('catName');
+			$cat = new Category;
+			$cat->cname = $cname;
+			$cat->save();
+		}
+		if(Input::has('categories')){
+			$cid = Input::get('categories');
+			Category::where('cid', '=', $cid)->delete();
 		}
 
 		$subcat = array();

@@ -29,14 +29,17 @@ Route::get('category', array('uses' => 'HomeController@showCategory'));
 Route::post('category', array('uses' => 'HomeController@showPayment'));
 
 Route::get('payment', array('uses' => 'HomeController@showPayment'));
-Route::post('payment', array('uses' => 'HomeController@doLogin'));
+
+Route::post('payment', array('before' => 'administrator','uses' => 'HomeController@doLogin'));
+
+Route::get('payment-loggedin', array('uses' => 'HomeController@showPaymentLoggedIn'));
+Route::get('payment-registered', array('uses' => 'HomeController@showPaymentRegistered'));
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));
 Route::post('admin', array('uses' => 'HomeController@showAdmin'));
 
 Route::get('selection', array('uses' => 'AudioController@showSelect'));
 Route::post('selection', array('uses' => 'AudioController@showSelect'));
-
 
 Route::get('download', array('uses' => 'HomeController@showDownload'));
 Route::post('download', array('uses' => 'HomeController@showDownload'));

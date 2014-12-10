@@ -50,12 +50,16 @@ class AudioController extends BaseController {
 			$subcat->cid = Input::get('categories');
 			$subcat->save();
 
-			$sid = Subcategory::where('sname','=', Input::get('subcatName'))->sid;
+			$sid = Subcategory::where('sname','=', Input::get('subcatName'))->first()->sid;
 			echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:".$dir."' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/subcat".$sid.".mp3");
-
-
-			echo "<script>alert('".Input::get('subcatName')."')</script>";
-
 		}
+		$subcat = array();
+		$categories = Category::all();
+
+		foreach($categories as $cat){
+			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
+		}
+
+		return View::make('admin')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 }
