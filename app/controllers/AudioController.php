@@ -38,10 +38,11 @@ class AudioController extends BaseController {
 			if($name === 'mp3'){
 				echo "<script>alert('Uploaded');</script>";	
 				$mid = Input::get('methods');
-				Input::file('audio')->move('audio/', 'method'.$mid.'.mp3');
+				Input::file('audio')->move('methods/', 'method'.$mid.'.mp3');
 			}
 			else{
-				echo "<script>alert('Please upload mp3 files only.');</script>";	
+				echo "<script>alert('Please upload mp3 files only.');</script>";
+
 			}	
 		}
 		else{
@@ -55,10 +56,10 @@ class AudioController extends BaseController {
 			$dir = "";
 			for ($i = 0; $i < count($checkedMs); $i++){
 				if($i === count($checkedMs) - 1){
-					$dir .= "/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/method".$checkedMs[$i].".mp3";
+					$dir .= "/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/methods/method".$checkedMs[$i].".mp3";
 				}
 				else{
-					$dir .= "/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/method".$checkedMs[$i].".mp3|";
+					$dir .= "/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/methods/method".$checkedMs[$i].".mp3|";
 				}
 			}
 
@@ -68,7 +69,7 @@ class AudioController extends BaseController {
 			$subcat->save();
 
 			$sid = Subcategory::where('sname','=', Input::get('subcatName'))->first()->sid;
-			echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:".$dir."' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/subcat".$sid.".mp3");
+			echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:".$dir."' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/subcat".$sid.".mp3");
 		}
 		$subcat = array();
 		$categories = Category::all();
