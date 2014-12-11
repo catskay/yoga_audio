@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\MessageBag;
+
 class HomeController extends BaseController {
 
 	/*
@@ -138,11 +140,11 @@ class HomeController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
+			$errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
 			return Redirect::to('payment')->with('subcat',$subcat)
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 			} else {
-
 			// create our user data for the authentication
 					$userdata = array(
 						'email' 	=> Input::get('email'),
@@ -165,6 +167,7 @@ class HomeController extends BaseController {
 					} else {	 	
 
 				// validation not successful, send back to form	
+						$errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
 						return Redirect::to('payment')->with('subcat',$subcat);
 
 					}

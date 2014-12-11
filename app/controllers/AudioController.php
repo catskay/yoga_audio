@@ -32,6 +32,23 @@ class AudioController extends BaseController {
 	}
 
 
+	public function upload(){
+		if(Input::hasFile('audio') && Input::has('methods')){
+			$name = Input::file('audio')->getClientOriginalExtension();
+			if($name === 'mp3'){
+				echo "<script>alert('Uploaded');</script>";	
+				$mid = Input::get('methods');
+				Input::file('audio')->move('audio/', 'method'.$mid.'.mp3');
+			}
+			else{
+				echo "<script>alert('Please upload mp3 files only.');</script>";	
+			}	
+		}
+		else{
+			echo "<script>alert('You did not choose any file!');</script>";	
+		}
+	}
+
 	public function merge(){
 		if(Input::has('submitted')){
 			$checkedMs = Input::get('checked');

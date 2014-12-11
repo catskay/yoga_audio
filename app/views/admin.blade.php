@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.dashboardlayout')
 
 @section('content')
 
@@ -58,13 +58,14 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$contents['text']}}</h4>
+                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$contents['text']}}?</h4>
               </div>
               <div class="modal-body">
                 {{Form::open(array('action'=>'HomeController@showAdmin'))}}
                 {{Form::hidden('subid', $contents['name'])}}
-                {{Form::submit('Delete',['class'=>'btn btn-red'])}}
+                {{Form::submit('Yes',['class'=>'btn btn-red', 'style'=>'float:left'])}}
                 {{Form::close()}}
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -89,8 +90,26 @@
          <option value={{$cat->cid}}>{{$cat->cname}}</option>
          @endforeach    
        </select>
-          {{Form::submit('Delete',['class'=>'btn btn-link'])}}
-       {{Form::close()}}
+        <a href="#myModal" data-toggle="modal" class="btn btn-link">Delete</a>
+
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$cat->cname}}?</h4>
+              </div>
+              <div class="modal-body">
+                {{Form::submit('Yes',['class'=>'btn btn-danger'])}}
+                {{Form::close()}}
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
      </div>
    </div>
  </div>
@@ -99,3 +118,4 @@
 
 
 @stop
+

@@ -30,12 +30,15 @@
     <link href="css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
     <link href="css/application.css" media="screen" rel="stylesheet" type="text/css">
 
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+
+
 
 </head>
 <body>
     <table>
         <tr>
-            <td><a href="home">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
+            <td>{{ HTML::image('img/amrit-yoga-logo.gif') }}</td>
         </tr>
     </table>                            
 
@@ -53,7 +56,6 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <!--name goes here-->
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -75,8 +77,8 @@
 
 
 
-    @yield('content')
-
+        @yield('content')
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -84,11 +86,24 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
 
+    <script src="js/jquery-1.11.0.js"></script>
     <script src="js/jquery.tinysort.js" type="text/javascript"></script>
     <script src="js/jquery.quicksearch.js" type="text/javascript"></script>
     <script src="js/jquery.multi-select.js" type="text/javascript"></script>
     <script src="js/application.js" type="text/javascript"></script>
 
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+    </script>
+
+    
 
 </body>
 </html>

@@ -31,7 +31,7 @@
     <link href="css/application.css" media="screen" rel="stylesheet" type="text/css">
 
     <link href="css/custom.css" rel="stylesheet" type="text/css">
-
+    <link href="css/bootstrap-select.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -70,6 +70,7 @@
     <script src="js/jquery.quicksearch.js" type="text/javascript"></script>
     <script src="js/jquery.multi-select.js" type="text/javascript"></script>
     <script src="js/application.js" type="text/javascript"></script>
+    <script src="js/bootstrap-select.js" type="text/javascript"></script>
 
 
 </body>

@@ -9,7 +9,7 @@
                 <a href="category"><button type="button" class="btn btn-red" style="float:right">Click here to view all experiences</button></a> 
                 <br><br>
                 <div class="panel panel-default">
-                    <!-- /.panel-heading -->
+                <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -53,7 +53,8 @@
                     </div>
                     <div class="modal-body">
                         <audio controls id="script"> 
-                              <source src="/yoga_audio/public/audio/audio-subcat3.mp3" >
+                              <source src="audio/audio-subcat3.mp3" >
+
                               Your browser does not support the audio tag.
                         </audio>
                     </div>
