@@ -32,6 +32,15 @@ class AudioController extends BaseController {
 	}
 
 
+	public function upload(){
+		if(Input::hasFile('file')){
+			echo "<script>alert('uploaded!');</script>";
+		}
+		else{
+			echo "<script>alert('no!');</script>";
+		}
+	}
+
 	public function merge(){
 		if(Input::has('submitted')){
 			$checkedMs = Input::get('checked');

@@ -51,7 +51,7 @@
                     </div>
                     <div class="modal-body">
                         <audio controls id="script"> 
-                              <source src="/yoga_audio/public/audio/audio-subcat3.mp3" >
+                              <source src="audio/audio-subcat3.mp3" >
                               Your browser does not support the audio tag.
                         </audio>
                     </div>

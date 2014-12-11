@@ -49,3 +49,6 @@ Route::post('test', array('uses' => 'HomeController@showTest'));
 
 Route::get('merge', array('uses' => 'AudioController@merge'));
 Route::post('merge', array('uses' => 'AudioController@merge'));
+
+Route::get('upload', array('uses' => 'AudioController@upload'));
+Route::post('upload', array('uses' => 'AudioController@upload'));

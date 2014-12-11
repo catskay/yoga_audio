@@ -34,7 +34,11 @@
        @endforeach
 
    </ul>
+ </div>
+</div>
 <br>
+<div class="row">
+  <div class="col-lg-6">
    <p><b>Please select a category: </b></p>
 
    <select name="categories" id = 'cat' onchange="change()">
@@ -53,7 +57,13 @@
 {{Form::submit('Merge', array('class' => 'btn')) }}
 {{Form::close()}}
 
-
+</div>
+<div class="col-lg-6">
+{{Form::open(array('action'=> 'AudioController@upload'))}}
+{{ Form::label('filelabel','Upload an Audio File') }}
+{{ Form::file('file','',array('id'=>'file','class'=>'')) }}
+{{Form::submit('Upload', array('class' => 'btn')) }}
+{{Form::close()}}
 </div>
 </div>
 
