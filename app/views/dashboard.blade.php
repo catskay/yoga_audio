@@ -24,9 +24,9 @@
                                 <tbody>
                                     @foreach($experiences as $exp)
                                      <tr class="odd gradeX">
-                                        <td>$exp->ename</td>
-                                        <td>$exp->date</td>
-                                        <td>$exp->notes</td>
+                                        <td>{{$exp->ename}}</td>
+                                        <td>{{$exp->date}}</td>
+                                        <td>{{$exp->notes}}</td>
                                         <td><div class="btn-group">
                                             <button type="submit" name="actions" value = "Download"class="btn btn-default">Download</button>
                                             <a href="#play" role="button" class="btn btn-default" data-toggle="modal">Play</a>

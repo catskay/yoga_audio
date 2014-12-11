@@ -20,12 +20,12 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
-    <link href="css/welcome.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <link href="css/welcome.css" rel="stylesheet">
     
 
 </head>

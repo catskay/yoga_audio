@@ -53,9 +53,11 @@ class HomeController extends BaseController {
 
 	public function showPayment()
 	{
+		if(Input::has('subcatId')){
 		Session::put('subcatId',Input::get('subcatId'));
+	}
 
-		$subcat = Subcategory::where('sid','=',Input::get('subcatId'))->first();
+		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
 		return View::make('payment')->with('subcat',$subcat);
 	}
@@ -111,6 +113,11 @@ class HomeController extends BaseController {
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
+		if(!Auth::check()){
+			$request = Request::create('payment', 'GET', array());
+			return Route::dispatch($request)->getContent();
+		}
+		else{
 		$exp = new Experience;
 		$exp->uid = Auth::user()->uid;
 		$exp->sid = Session::get('subcatId');
@@ -120,6 +127,7 @@ class HomeController extends BaseController {
 		$exp->save();
 
 		return View::make('download')->with('subcat',$subcat);
+	}
 	}
 
 
