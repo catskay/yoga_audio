@@ -22,15 +22,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($experiences as $exp)
                                      <tr class="odd gradeX">
-                                        <td>name</td>
-                                        <td>11/29/14</td>
-                                        <td>for sleeping</td>
+                                        <td>$exp->ename</td>
+                                        <td>$exp->date</td>
+                                        <td>$exp->notes</td>
                                         <td><div class="btn-group">
                                             <button type="submit" name="actions" value = "Download"class="btn btn-default">Download</button>
                                             <a href="#play" role="button" class="btn btn-default" data-toggle="modal">Play</a>
                                         </div></td>
                                    </tr>
+                                   @endforeach
                                 </tbody>
                             </table>
                         </div>

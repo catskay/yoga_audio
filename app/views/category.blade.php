@@ -40,7 +40,7 @@
     @foreach($categories as $cat)
 
         @foreach($subcategories[$cat->cid] as $subcat)
-          <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname)); ?>
+          <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname, 'id' => $subcat->sid)); ?>
         @endforeach
 
     @endforeach
@@ -58,8 +58,7 @@
           <div class="modal-body">
             <p>Description here</p>
             {{Form::open(array('action' => 'HomeController@showPayment')); }}
-            {{Form::hidden('categName', $contents['text']) }}
-            {{Form::hidden('categId', $contents['name']) }}
+            {{Form::hidden('subcatId', $contents['id']) }}
             {{Form::submit('Click here to purchase audio file', array('class' => 'btn btn-link'));}}
             {{Form::close() }}
           </div>

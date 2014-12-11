@@ -91,12 +91,10 @@ Route::filter('csrf', function()
 
 
 Route::filter('administrator', function(){
-	
-	if(Auth::check()){
 		
-		if(Auth::user()->email === 'kamini@kaminidesai.com'){
+	if(Auth::check() && Auth::user()->type === 'admin'){
 			return Redirect::to('admin');
-		}
 	} 
+	
 });
 

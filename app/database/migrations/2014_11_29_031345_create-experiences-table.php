@@ -16,13 +16,13 @@ class CreateExperiencesTable extends Migration {
 		{
 			$table->increments('eid');
 
-			$table->string('ename',50);
+			$table->string('ename',100);
 			$table->string('notes',1000);
+			$table->date('date');
                         
             $table->unsignedInteger('uid');
             $table->foreign('uid')->references('uid')->on('users');
 
-			$table->unsignedInteger('cid');
             $table->unsignedInteger('sid');
 
 			$table->timestamps();                        

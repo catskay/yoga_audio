@@ -40,47 +40,42 @@ class HomeController extends BaseController {
 
 	public function showDashboard()
 	{
+		$experiences = array();
 
-		$subcat = array();
-		$categories = Category::all();
-
-		foreach($categories as $cat){
-			$subcat[$cat->cid] = Subcategory::where('cid','=',$cat->cid)->get();
+		if(Auth::check()){
+			$experiences = Experience::where('uid','=',Auth::user()->uid)->get();
 		}
 
-		return View::make('dashboard')->with('categories',$categories)->with('subcategories',$subcat);
+		return View::make('dashboard')->with('experiences',$experiences);
 	}
 
 	public function showPayment()
 	{
-		Session::put('categId',Input::get('categId'));
-		Session::put('categName'Input::get('categName'));
-		$categtext = Input::get('categName');
-		$categnum = Input::get('categId');
-		return View::make('payment')->with('categtext',$categtext)->with('categnum',$categnum);
+		Session::put('subcatId',Input::get('subcatId'));
+
+		$subcat = Subcategory::where('sid','=',Input::get('subcatId'))->first();
+
+		return View::make('payment')->with('subcat',$subcat);
 	}
 
 	public function showPaymentLoggedIn()
 	{
 		if(Auth::check()){
-			$name = Auth::user()->name;
-			$email = Auth::user()->email;
+			$user = Auth::user();
 		}
-		$categtext = Session::get('categName');
-		$categnum = Session::get('categId');
+		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
-		return View::make('payment-loggedin')->with('name',$name)->with('email',$email)->with('categtext',$categtext)->with('categnum',$categnum);
+		return View::make('payment-loggedin')->with('user',$user)->with('subcat',$subcat);
 	}
 
 	public function showPaymentRegistered()
 	{
 		if(Auth::check()){
-			$name = Auth::user()->name;
-			$email = Auth::user()->email;
+			$user = Auth::user();
 		}
-		$categtext = Session::get('categName');
-		$categnum = Session::get('categId');
-		return View::make('payment-registered')->with('name',$name)->with('email',$email)->with('categtext',$categtext)->with('categnum',$categnum);
+		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
+
+		return View::make('payment-registered')->with('user',$user)->with('subcat',$subcat);
 	}
 
 	public function showAdmin()
@@ -112,14 +107,23 @@ class HomeController extends BaseController {
 
 	public function showDownload()
 	{
-		$categtext = Session::get('categName');
-		$categnum = Session::get('categId');
-		return View::make('download')->with('categtext',$categtext)->with('categnum',$categnum);
+		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
+
+		$exp = new Experience;
+		$exp->uid = Auth::user()->uid;
+		$exp->sid = Session::get('subcatId');
+		$exp->ename = $subcat->sname;
+		$exp->notes = 'Notes go here.';
+		$exp->date = date('Y-m-d');
+		$exp->save();
+
+		return View::make('download')->with('subcat',$subcat);
 	}
 
 
 	public function doLogin()
 	{
+		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 		//Session::flush();
 		if(Input::get('submit')==='Login'){
 			
@@ -134,7 +138,7 @@ class HomeController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
-			return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'))
+			return Redirect::to('payment')->with('subcat',$subcat)
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 			} else {
@@ -155,13 +159,13 @@ class HomeController extends BaseController {
 							return Redirect::to('dashboard');
 						}
 						else{
-							return Redirect::to('payment-loggedin')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
+							return Redirect::to('payment-loggedin')->with('subcat',$subcat);
 						}
 
 					} else {	 	
 
 				// validation not successful, send back to form	
-						return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
+						return Redirect::to('payment')->with('subcat',$subcat);
 
 					}
 
@@ -170,10 +174,10 @@ class HomeController extends BaseController {
 			}
 			else{
 				if($this->register()){
-					return Redirect::to('payment-registered')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
+					return Redirect::to('payment-registered')->with('subcat',$subcat);
 				}
 				else{
-					return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
+					return Redirect::to('payment')->with('subcat',$subcat);
 				}
 			}
 				
@@ -186,6 +190,9 @@ class HomeController extends BaseController {
 		}
 
 		public function register(){
+			
+			$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
+
 			// validate the info, create rules for the inputs
 			$rules = array(
 			'regEmail' => 'required|email',
@@ -197,7 +204,7 @@ class HomeController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 			if ($validator->fails()) {
-				return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'))
+				return Redirect::to('payment')->with('subcat',$subcat)
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 			} else{

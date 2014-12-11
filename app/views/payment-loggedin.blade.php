@@ -7,16 +7,16 @@
         <div class="col-md-8">
             <div class= "lined-container">
             <h3>User information</h3>
-                <h6>Name: </h6>{{$name}}
+                <h6>Name: </h6>{{$user->name}}
                 <br>
-                <h6>Email: </h6>{{$email}}
+                <h6>Email: </h6>{{$user->email}}
             </div>
         </div>
 		<div class="col-md-4">
 			<div class="lined-container">
 				<h4>Cart summary</h4>
 				{{ HTML::image('img/audio-file.jpg') }}
-				<p style="float:right">{{ $categtext }}</p>
+				<p style="float:right">{{ $subcat->sname }}</p>
                 <br><br>
                 <p style="float:right"><b>Total: </b> $5.00</p>
                 <br><br>
