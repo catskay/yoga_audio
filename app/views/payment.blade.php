@@ -7,6 +7,11 @@
         <div class="col-md-8">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
+                    @if ($error = $errors->first('password'))
+                      <div class="alert alert-danger">
+                        Incorrect username or password.
+                      </div>
+                    @endif
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
