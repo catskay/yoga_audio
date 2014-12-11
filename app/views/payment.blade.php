@@ -11,7 +11,7 @@
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Login
-                                {{Form::open()}}
+                                {{Form::open(array('url' => 'payment'))}}
                             </a>
                         </h4>
                     </div>
@@ -19,9 +19,9 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" name="email" style="width:450px">
+                                <input class="form-control" type="text" name="email" style="width:450px">
                                 <label>Password</label>
-                                <input class="form-control" name="password" type="password" style="width:450px">
+                                <input class="form-control" type="password" name="password" style="width:450px">
                                 <br>
                                 <input type="submit" name="submit" value="Login" class="btn btn-red">
                             </div>
@@ -49,6 +49,7 @@
                                 <input class="form-control" name="regPass" type="password" style="width:450px">
                                 <br>
                                 <input type="submit" name="submit" value="Register" class="btn btn-red">
+                                {{Form::hidden('from','payment')}}
                                 {{Form::close() }}
                             </div>
                         </div>
@@ -65,8 +66,6 @@
                 <p style="float:right"><b>Total: </b> $5.00</p>
                 <br><br>
                 {{Form::open(array('action' => 'HomeController@showDownload')); }}
-                {{Form::hidden('categName', $categtext) }}
-                {{Form::hidden('categId', $categnum) }}
                 {{Form::submit('Checkout', array('class' => 'btn btn-red'));}}
                 {{Form::close()}}
                 <br>

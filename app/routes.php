@@ -21,7 +21,7 @@ Route::get('/', function()
 Route::get('home', array('uses' => 'HomeController@showHome'));
 
 // route to process the form
-Route::post('login', array('uses' => 'HomeController@doLogin'));
+Route::post('home', array('uses' => 'HomeController@doLogin'));
 
 Route::get('dashboard', array('before' => 'administrator','uses' => 'HomeController@showDashboard'));
 
@@ -32,7 +32,7 @@ Route::get('payment', array('uses' => 'HomeController@showPayment'));
 
 Route::post('payment', array('before' => 'administrator','uses' => 'HomeController@doLogin'));
 
-Route::get('payment-loggedin', array('uses' => 'HomeController@showPaymentLoggedIn'));
+Route::get('payment-loggedin', array('before' => 'administrator','uses' => 'HomeController@showPaymentLoggedIn'));
 Route::get('payment-registered', array('uses' => 'HomeController@showPaymentRegistered'));
 
 Route::get('admin', array('uses' => 'HomeController@showAdmin'));

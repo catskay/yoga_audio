@@ -74,7 +74,7 @@
                         <h4 class="modal-title" id="loginLabel">Please sign in</h4>
                     </div>
                     <div class="modal-body">
-                        {{ Form::open(array('url' => 'login')) }}
+                        {{ Form::open(array('url' => 'home')) }}
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
@@ -91,6 +91,7 @@
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="submit" name="submit" value="Login" class="btn btn-lg btn-red btn-block">
                             </fieldset>
+                            {{Form::hidden('from','home')}}
                             {{ Form::close() }}
                         </form>
                         <p>

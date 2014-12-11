@@ -53,6 +53,8 @@ class HomeController extends BaseController {
 
 	public function showPayment()
 	{
+		Session::put('categId',Input::get('categId'));
+		Session::put('categName'Input::get('categName'));
 		$categtext = Input::get('categName');
 		$categnum = Input::get('categId');
 		return View::make('payment')->with('categtext',$categtext)->with('categnum',$categnum);
@@ -64,8 +66,8 @@ class HomeController extends BaseController {
 			$name = Auth::user()->name;
 			$email = Auth::user()->email;
 		}
-		$categtext = Input::get('categName');
-		$categnum = Input::get('categId');
+		$categtext = Session::get('categName');
+		$categnum = Session::get('categId');
 
 		return View::make('payment-loggedin')->with('name',$name)->with('email',$email)->with('categtext',$categtext)->with('categnum',$categnum);
 	}
@@ -76,8 +78,8 @@ class HomeController extends BaseController {
 			$name = Auth::user()->name;
 			$email = Auth::user()->email;
 		}
-		$categtext = Input::get('categName');
-		$categnum = Input::get('categId');
+		$categtext = Session::get('categName');
+		$categnum = Session::get('categId');
 		return View::make('payment-registered')->with('name',$name)->with('email',$email)->with('categtext',$categtext)->with('categnum',$categnum);
 	}
 
@@ -110,16 +112,17 @@ class HomeController extends BaseController {
 
 	public function showDownload()
 	{
-		$categtext = Input::get('categName');
-		$categnum = Input::get('categId');
+		$categtext = Session::get('categName');
+		$categnum = Session::get('categId');
 		return View::make('download')->with('categtext',$categtext)->with('categnum',$categnum);
 	}
 
 
 	public function doLogin()
 	{
-		Session::flush();
+		//Session::flush();
 		if(Input::get('submit')==='Login'){
+			
 		// validate the info, create rules for the inputs
 		$rules = array(
 			'email'    => 'required|email', // make sure the email is an actual email
@@ -131,7 +134,7 @@ class HomeController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
-			return Redirect::to('payment')
+			return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'))
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 			} else {
@@ -148,13 +151,17 @@ class HomeController extends BaseController {
 				// validation successful!
 				// redirect them to the secure section or whatever
 				// return Redirect::to('secure');
-						
-						return Redirect::to('dashboard');
+						if(Input::get('from')==='home'){
+							return Redirect::to('dashboard');
+						}
+						else{
+							return Redirect::to('payment-loggedin')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
+						}
 
 					} else {	 	
 
 				// validation not successful, send back to form	
-						return Redirect::to('payment');
+						return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
 
 					}
 
@@ -163,10 +170,10 @@ class HomeController extends BaseController {
 			}
 			else{
 				if($this->register()){
-					return Redirect::to('dashboard');
+					return Redirect::to('payment-registered')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
 				}
 				else{
-					return Redirect::to('payment');
+					return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'));
 				}
 			}
 				
@@ -179,7 +186,6 @@ class HomeController extends BaseController {
 		}
 
 		public function register(){
-
 			// validate the info, create rules for the inputs
 			$rules = array(
 			'regEmail' => 'required|email',
@@ -191,7 +197,7 @@ class HomeController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 			if ($validator->fails()) {
-				return Redirect::to('payment')
+				return Redirect::to('payment')->with('categnum',Session::get('categId'))->with('categtext',Session::get('categName'))
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 			} else{
