@@ -54,7 +54,7 @@ class HomeController extends BaseController {
 	public function showPayment()
 	{
 		Session::put('categId',Input::get('categId'));
-		Session::put('categName'Input::get('categName'));
+		Session::put('categName',Input::get('categName'));
 		$categtext = Input::get('categName');
 		$categnum = Input::get('categId');
 		return View::make('payment')->with('categtext',$categtext)->with('categnum',$categnum);

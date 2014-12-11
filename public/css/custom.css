@@ -8,3 +8,8 @@
 {
     padding-left:15px;
 }
+
+.border
+{
+	 outline: 1px solid white;
+}
