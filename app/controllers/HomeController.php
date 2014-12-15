@@ -22,6 +22,12 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	//Shows view category.blade.php, where user can select a category to purchase.
+	//returns an array of all categories from the db and
+	//the subcategories arranged in format where indexes of the arrays are cid column of category
+	//and values of the array are eloquent arrays of subcategories from db.  
+	//ex: array('category->cid' => subcategories).
+
 	public function showCategory()
 	{
 		$subcat = array();
@@ -34,11 +40,19 @@ class HomeController extends BaseController {
 		return View::make('category')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
+	//Shows the homepage.  This is the first page that the user sees where they
+	//can log in or start a new audio script.
+
 	public function showHome()
 	{
 		// show the form
 		return View::make('home');
 	}
+
+
+	//shows the dashboard.  If the user logs in from the homepage,
+	//this is where they are redirected.  An array is returned containing
+	//all 'experiences' belonging to the logged in user.
 
 	public function showDashboard()
 	{
@@ -51,6 +65,12 @@ class HomeController extends BaseController {
 		return View::make('dashboard')->with('experiences',$experiences);
 	}
 
+
+	//shows the payment page (payment.blade.php) where the user can
+	//checkout, login, or register.  Also returns an eloquent object
+	//named 'subcat' which contains the subcategory that the user 
+	//selected on the previous page (category.blade.php)
+
 	public function showPayment()
 	{
 		if(Input::has('subcatId')){
@@ -62,6 +82,10 @@ class HomeController extends BaseController {
 		return View::make('payment')->with('subcat',$subcat);
 	}
 
+
+	//This view shows after the user logs in from the payment page.
+	//returns the user currently logged in and the subcategory selected.
+
 	public function showPaymentLoggedIn()
 	{
 		if(Auth::check()){
@@ -72,6 +96,10 @@ class HomeController extends BaseController {
 		return View::make('payment-loggedin')->with('user',$user)->with('subcat',$subcat);
 	}
 
+
+	//This view shows after the user registers from the payment page.
+	//returns the user currently logged in and the subcategory selected.
+
 	public function showPaymentRegistered()
 	{
 		if(Auth::check()){
@@ -81,6 +109,14 @@ class HomeController extends BaseController {
 
 		return View::make('payment-registered')->with('user',$user)->with('subcat',$subcat);
 	}
+
+
+	//When a user logs in, a filter checks to see if they are an administrator.
+	//if they are, the 'admin' route directs them to this method.
+	//returns an array of all categories from the db and
+	//the subcategories arranged in format where indexes of the arrays are cid column of category
+	//and values of the array are eloquent arrays of subcategories from db.  
+	//ex: array('category->cid' => subcategories).
 
 	public function showAdmin()
 	{
@@ -109,6 +145,11 @@ class HomeController extends BaseController {
 		return View::make('admin')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
+
+	//shows the view download.blade.php after checkout. Creates
+	//a new 'experience' for the user and saves it in the db.
+	//returns the selected subcategory.
+
 	public function showDownload()
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
@@ -130,6 +171,10 @@ class HomeController extends BaseController {
 	}
 	}
 
+
+	//post method for users logging in from 'home' or 'payment'.
+	//redirects the user depending on whether they came from 'home' or 'payment'
+	//checks whether the user clicked 'login' or 'register' and reacts accordingly.
 
 	public function doLogin()
 	{
@@ -194,11 +239,18 @@ class HomeController extends BaseController {
 				
 		}
 
+
+		//logs the user out.
+
 		public function doLogout(){
 			Auth::logout(); // log the user out of our application
 			Session::flush();
 			return Redirect::to('home'); // redirect the user to the login screen
 		}
+
+
+		//called from method 'doLogin'.  creates a new user with the
+		//specified info and logs them in.
 
 		public function register(){
 			
