@@ -38,7 +38,7 @@
 <body>
     <table>
         <tr>
-            <td>{{ HTML::image('img/amrit-yoga-logo.gif') }}</td>
+            <td><a href="home">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
         </tr>
     </table>                            
 
@@ -65,7 +65,7 @@
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
                         <li class="divider"></li>
-                        <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                        <li><a href="home"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>

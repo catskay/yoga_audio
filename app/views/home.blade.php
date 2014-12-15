@@ -39,7 +39,7 @@
                 <h2> Yoga Nidra <br> <h4> This site provides a Yoga Nidra <br> experience based on your health needs </h4> </h2>
             </div>
             <div class="col-md-4">
-                <a href="#login" style="float:right" role="button" class="btn-link" data-toggle="modal">Sign In</a></p>
+                <a href="#login" style="float:right" role="button" class="btn-link" data-toggle="modal">Sign In</a>
             </div>
         </div>
     </div>
@@ -99,9 +99,7 @@
                             {{ $errors->first('password') }}
                         </p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

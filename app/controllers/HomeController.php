@@ -179,7 +179,6 @@ class HomeController extends BaseController {
 	public function doLogin()
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
-		Session::flush();
 		if(Input::get('submit')==='Login'){
 			
 		// validate the info, create rules for the inputs
