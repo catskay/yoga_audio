@@ -38,7 +38,7 @@
 <body>
     <table>
         <tr>
-            <td>{{ HTML::image('img/amrit-yoga-logo.gif') }}</td>
+            <td><a href="home">{{ HTML::image('img/amrit-yoga-logo.gif')}}</a></td>
         </tr>
     </table>                            
 

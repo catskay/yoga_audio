@@ -57,18 +57,16 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$contents['text']}}?</h4>
               </div>
               <div class="modal-body">
-                {{Form::open(array('action'=>'HomeController@showAdmin'))}}
-                {{Form::hidden('subid', $contents['name'])}}
-                {{Form::submit('Yes',['class'=>'btn btn-red', 'style'=>'float:left'])}}
-                {{Form::close()}}
-                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                <h4>Are you sure you want to delete {{$contents['text']}}?</h4>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                {{Form::open(array('action'=>'HomeController@showAdmin'))}}
+                {{Form::hidden('subid', $contents['name'])}}
+                {{Form::submit('Yes',['class'=>'btn btn-red','style'=>'float:left'])}}
+                {{Form::close()}}
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
               </div>
             </div>
           </div>
@@ -96,16 +94,14 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete {{$cat->cname}}?</h4>
               </div>
               <div class="modal-body">
-                {{Form::submit('Yes',['class'=>'btn btn-danger'])}}
-                {{Form::close()}}
-                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                <h4>Are you sure you want to delete {{$cat->cname}}?</h4>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                {{Form::submit('Yes',['class'=>'btn btn-danger','style'=>'float:left'])}}
+                {{Form::close()}}
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
               </div>
             </div>
           </div>

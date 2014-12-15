@@ -4,23 +4,16 @@ use Illuminate\Support\MessageBag;
 
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
-
 	public function showWelcome()
 	{
 		return View::make('hello');
 	}
+
+	// Shows view category.blade.php, where user can select a category to purchase.
+	// returns an array of all categories from the db and
+	// the subcategories arranged in format where indexes of the arrays are cid column of category
+	// and values of the array are eloquent arrays of subcategories from db.  
+	// ex: array('category->cid' => subcategories).
 
 	public function showCategory()
 	{
@@ -34,11 +27,19 @@ class HomeController extends BaseController {
 		return View::make('category')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
+	// Shows the homepage.  This is the first page that the user sees where they
+	// can log in or start a new audio script.
+
 	public function showHome()
 	{
 		// show the form
 		return View::make('home');
 	}
+
+
+	// shows the dashboard.  If the user logs in from the homepage,
+	// this is where they are redirected.  An array is returned containing
+	// all 'experiences' belonging to the logged in user.
 
 	public function showDashboard()
 	{
@@ -51,6 +52,12 @@ class HomeController extends BaseController {
 		return View::make('dashboard')->with('experiences',$experiences);
 	}
 
+
+	// shows the payment page (payment.blade.php) where the user can
+	// checkout, login, or register.  Also returns an eloquent object
+	// named 'subcat' which contains the subcategory that the user 
+	// selected on the previous page (category.blade.php)
+
 	public function showPayment()
 	{
 		if(Input::has('subcatId')){
@@ -61,6 +68,10 @@ class HomeController extends BaseController {
 
 		return View::make('payment')->with('subcat',$subcat);
 	}
+
+
+	// This view shows after the user logs in from the payment page.
+	// returns the user currently logged in and the subcategory selected.
 
 	public function showPaymentLoggedIn()
 	{
@@ -73,6 +84,10 @@ class HomeController extends BaseController {
 		return View::make('payment-loggedin')->with('user',$user)->with('subcat',$subcat);
 	}
 
+
+	// This view shows after the user registers from the payment page.
+	// returns the user currently logged in and the subcategory selected.
+
 	public function showPaymentRegistered()
 	{
 		if(Auth::check()){
@@ -82,6 +97,14 @@ class HomeController extends BaseController {
 
 		return View::make('payment-registered')->with('user',$user)->with('subcat',$subcat);
 	}
+
+
+	// When a user logs in, a filter checks to see if they are an administrator.
+	// if they are, the 'admin' route directs them to this method.
+	// returns an array of all categories from the db and
+	// the subcategories arranged in format where indexes of the arrays are cid column of category
+	// and values of the array are eloquent arrays of subcategories from db.  
+	// ex: array('category->cid' => subcategories).
 
 	public function showAdmin()
 	{
@@ -110,6 +133,11 @@ class HomeController extends BaseController {
 		return View::make('admin')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
+
+	// shows the view download.blade.php after checkout. Creates
+	// a new 'experience' for the user and saves it in the db.
+	// returns the selected subcategory.
+
 	public function showDownload()
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
@@ -119,23 +147,26 @@ class HomeController extends BaseController {
 			return Route::dispatch($request)->getContent();
 		}
 		else{
-		$exp = new Experience;
-		$exp->uid = Auth::user()->uid;
-		$exp->sid = Session::get('subcatId');
-		$exp->ename = $subcat->sname;
-		$exp->notes = 'Notes go here.';
-		$exp->date = date('Y-m-d');
-		$exp->save();
+			$exp = new Experience;
+			$exp->uid = Auth::user()->uid;
+			$exp->sid = Session::get('subcatId');
+			$exp->ename = $subcat->sname;
+			$exp->notes = 'Notes go here.';
+			$exp->date = date('Y-m-d');
+			$exp->save();
 
-		return View::make('download')->with('subcat',$subcat);
-	}
+			return View::make('download')->with('subcat',$subcat);
+		}
 	}
 
+
+	// post method for users logging in from 'home' or 'payment'.
+	// redirects the user depending on whether they came from 'home' or 'payment'
+	// checks whether the user clicked 'login' or 'register' and reacts accordingly.
 
 	public function doLogin()
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
-		// Session::flush();
 		if(Input::get('submit')==='Login'){
 			
 		// validate the info, create rules for the inputs
@@ -195,11 +226,18 @@ class HomeController extends BaseController {
 				
 		}
 
+
+		// logs the user out.
+
 		public function doLogout(){
 			Auth::logout(); // log the user out of our application
 			Session::flush();
 			return Redirect::to('home'); // redirect the user to the login screen
 		}
+
+
+		// called from method 'doLogin'.  creates a new user with the
+		// specified info and logs them in.
 
 		public function register(){
 			
@@ -248,15 +286,4 @@ class HomeController extends BaseController {
 			}
 		}
 
-		public function merge(){
-			if(Input::has('submitted')){
-				echo "Starting ffmpeg...\n\n";
-				echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/input1.mp3|/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/input2.mp3' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/output.mp3");
-				echo "Done.\n";
-			}
-		}
-
-		public function showTest(){
-			return View::make('testaudio');
-		}
 	}
