@@ -17,16 +17,15 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
-
-	// Shows view category.blade.php, where user can select a category to purchase.
-	// returns an array of all categories from the db and
-	// the subcategories arranged in format where indexes of the arrays are cid column of category
-	// and values of the array are eloquent arrays of subcategories from db.  
-	// ex: array('category->cid' => subcategories).
+	/**
+	 * Shows view category.blade.php, where user can select a subcategory to purchase.
+	 * returns an array of all categories from the db and
+	 * the subcategories arranged in format where indexes of the arrays are cid column of category
+	 * and values of the array are eloquent arrays of subcategories from db.
+	 * ex: array('category->cid' => subcategories).
+	 *
+	 * @return categories, subcategories
+	 */
 
 	public function showCategory()
 	{
@@ -40,8 +39,13 @@ class HomeController extends BaseController {
 		return View::make('category')->with('categories',$categories)->with('subcategories',$subcat);
 	}
 
-	// Shows the homepage.  This is the first page that the user sees where they
-	// can log in or start a new audio script.
+
+	/**
+	 * Shows the homepage.  This is the first page that the user sees where they
+	 * can log in or start a new audio script.
+	 *
+	 * @return none
+	 */
 
 	public function showHome()
 	{
@@ -50,9 +54,13 @@ class HomeController extends BaseController {
 	}
 
 
-	// shows the dashboard.  If the user logs in from the homepage,
-	// this is where they are redirected.  An array is returned containing
-	// all 'experiences' belonging to the logged in user.
+	/**
+	 * shows the dashboard.  If the user logs in from the homepage,
+	 * this is where they are redirected.  An eloquent array is returned
+	 * containing all 'experiences' belonging to the logged in user.
+	 *
+	 * @return experiences
+	 */
 
 	public function showDashboard()
 	{
@@ -66,10 +74,15 @@ class HomeController extends BaseController {
 	}
 
 
-	// shows the payment page (payment.blade.php) where the user can
-	// checkout, login, or register.  Also returns an eloquent object
-	// named 'subcat' which contains the subcategory that the user 
-	// selected on the previous page (category.blade.php)
+	//
+	/**
+	 * shows the payment page (payment.blade.php) where the user can
+	 * checkout, login, or register.  Also returns an eloquent object
+	 * named 'subcat' which contains the subcategory that the user
+	 * selected on the previous page (category.blade.php)
+
+	 * @return subcat
+	 */
 
 	public function showPayment()
 	{
@@ -83,8 +96,12 @@ class HomeController extends BaseController {
 	}
 
 
-	// This view shows after the user logs in from the payment page.
-	// returns the user currently logged in and the subcategory selected.
+	/**
+	 * This view shows after the user logs in from the payment page.
+	 * returns the user currently logged in and the subcategory selected.
+	 *
+	 * @return user, subcat
+	 */
 
 	public function showPaymentLoggedIn()
 	{
@@ -97,8 +114,12 @@ class HomeController extends BaseController {
 	}
 
 
-	// This view shows after the user registers from the payment page.
-	// returns the user currently logged in and the subcategory selected.
+	/**
+	 * This view shows after the user registers from the payment page.
+	 * returns the user currently logged in and the subcategory selected.
+	 *
+	 * @return user, subcat
+	 */
 
 	public function showPaymentRegistered()
 	{
@@ -111,12 +132,17 @@ class HomeController extends BaseController {
 	}
 
 
-	// When a user logs in, a filter checks to see if they are an administrator.
-	// if they are, the 'admin' route directs them to this method.
-	// returns an array of all categories from the db and
-	// the subcategories arranged in format where indexes of the arrays are cid column of category
-	// and values of the array are eloquent arrays of subcategories from db.  
-	// ex: array('category->cid' => subcategories).
+
+	/**
+	 * When a user logs in, a filter checks to see if they are an administrator.
+	 * if they are, the 'admin' route directs them to this method.
+	 * returns an array of all categories from the db and
+	 * the subcategories arranged in format where indexes of the arrays are cid column of category
+	 * and values of the array are eloquent arrays of subcategories from db.
+	 * ex: array('category->cid' => subcategories).
+	 *
+	 * @return categories, subcategories
+	 */
 
 	public function showAdmin()
 	{
@@ -146,9 +172,13 @@ class HomeController extends BaseController {
 	}
 
 
-	// shows the view download.blade.php after checkout. Creates
-	// a new 'experience' for the user and saves it in the db.
-	// returns the selected subcategory.
+	/**
+	 * shows the view download.blade.php after checkout. Creates
+	 * a new 'experience' for the user and saves it in the db.
+	 * returns the selected subcategory.
+	 *
+	 * @return subcat
+	 */
 
 	public function showDownload()
 	{
@@ -172,9 +202,13 @@ class HomeController extends BaseController {
 	}
 
 
-	// post method for users logging in from 'home' or 'payment'.
-	// redirects the user depending on whether they came from 'home' or 'payment'
-	// checks whether the user clicked 'login' or 'register' and reacts accordingly.
+	/**
+	 * post method for users logging in from 'home' or 'payment'.
+	 * redirects the user depending on whether they came from 'home' or 'payment'
+	 * checks whether the user clicked 'login' or 'register' and reacts accordingly.
+	 *
+	 * @return mixed
+	 */
 
 	public function doLogin()
 	{
@@ -249,8 +283,12 @@ class HomeController extends BaseController {
 		}
 
 
-		// called from method 'doLogin'.  creates a new user with the
-		// specified info and logs them in.
+		/**
+		 * called from method 'doLogin'.  creates a new user with the
+		 * specified info and logs them in.
+		 *
+	 	 * @return bool
+	 	*/
 
 		public function register(){
 			

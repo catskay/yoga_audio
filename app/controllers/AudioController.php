@@ -3,17 +3,21 @@
 class AudioController extends BaseController {
 
 
-	// for admin site.  If admin user creates a new subcategory, they
-	// are redirected here.  Redirects to selction.blade.php.
-	// returns 'arr', an associative array containing all the methods
-	// from the yoga nidra cards in format:
-	// array('section name', array('subsection name', $methods)),
-	// where methods is an eloquent array object.
-	// also returns 'namearr' which contains info about current user
-	// returns an array of all categories from the db and
-	// the subcategories arranged in format where indexes of the arrays are cid column of category
-	// and values of the array are eloquent arrays of subcategories from db.  
-	// ex: array('category->cid' => subcategories).
+	/**
+	 * for admin site.  If admin user creates a new subcategory, they
+	 * are redirected here.  Redirects to selction.blade.php.
+	 * returns 'arr', an associative array containing all the methods
+	 * from the yoga nidra cards in format:
+	 * array('section name', array('subsection name', $methods)),
+	 * where methods is an eloquent array object.
+	 * also returns 'namearr' which contains info about current user
+	 * returns an array of all categories from the db and
+	 * the subcategories arranged in format where indexes of the arrays are cid column of category
+	 * and values of the array are eloquent arrays of subcategories from db.
+	 * ex: array('category->cid' => subcategories).
+	 *
+	 * @return arr, namearr, categories, subcategories
+	 */
 
 	public function showSelect()
 	{
@@ -45,8 +49,12 @@ class AudioController extends BaseController {
 	}
 
 	
-	// method for admin to upload a new audio file that corresponds with an existing
-	// method in the db.
+
+
+	/**
+	 * method for admin to upload a new audio file that corresponds with an existing
+	 * method in the db.
+	 */
 
 	public function upload(){
 		if(Input::hasFile('audio') && Input::has('methods')){
@@ -67,14 +75,20 @@ class AudioController extends BaseController {
 	}
 
 
-	// when admin has selected methods in select.blade.php for a new
-	// subcategory, merge() will merge the corresponding audio files (from /methods)
-	// into one file, which is stored in the /audio folder.
-	// redirects admin to 'admin.blade.php'
-	// returns an array of all categories from the db and
-	// the subcategories arranged in format where indexes of the arrays are cid column of category
-	// and values of the array are eloquent arrays of subcategories from db.  
-	// ex: array('category->cid' => subcategories).
+	//
+
+	/**
+	 * when admin has selected methods in select.blade.php for a new
+	 * subcategory, merge() will merge the corresponding audio files (from /methods)
+	 * into one file, which is stored in the /audio folder.
+	 * redirects admin to 'admin.blade.php'
+	 * returns an array of all categories from the db and
+	 * the subcategories arranged in format where indexes of the arrays are cid column of category
+	 * and values of the array are eloquent arrays of subcategories from db.
+	 * ex: array('category->cid' => subcategories).
+	 *
+	 * @return categories, subcategories
+	 */
 
 	public function merge(){
 		if(Input::has('submitted')){
