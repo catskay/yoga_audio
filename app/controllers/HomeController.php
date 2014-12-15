@@ -54,8 +54,8 @@ class HomeController extends BaseController {
 	public function showPayment()
 	{
 		if(Input::has('subcatId')){
-		Session::put('subcatId',Input::get('subcatId'));
-	}
+			Session::put('subcatId',Input::get('subcatId'));
+		}
 
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
@@ -67,6 +67,7 @@ class HomeController extends BaseController {
 		if(Auth::check()){
 			$user = Auth::user();
 		}
+
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
 		return View::make('payment-loggedin')->with('user',$user)->with('subcat',$subcat);
@@ -134,7 +135,7 @@ class HomeController extends BaseController {
 	public function doLogin()
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
-		Session::flush();
+		// Session::flush();
 		if(Input::get('submit')==='Login'){
 			
 		// validate the info, create rules for the inputs
