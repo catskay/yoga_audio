@@ -11,27 +11,27 @@
 
   <div class="row">
     <div class="col-lg-7 checkbox">
-     {{Form::open(array('action' => 'AudioController@merge'))}}
-     @foreach($arr as $section => $subsections)
-     @foreach($subsections as $subsection => $methods)
-     <?php 
-     $sub = Subsection::where("ssname", "=", $subsection)->first();  
-     $r = $sub->r;
-     $g = $sub->g;
-     $b = $sub->b;
-     $str = '"color:rgb('.$r.','.$g.','.$b.')"';
-     ?>
-     <ul style={{$str}}><b>{{$section}}</b>
-      <ul>{{$subsection}}
-       @foreach($methods as $method)
-       <li>
-         {{Form::checkbox('checked[]', $method->mid)}}{{$method->mname}}<br>
-       </li>
-       @endforeach
+       {{Form::open(array('action' => 'AudioController@merge'))}}
+       @foreach($arr as $section => $subsections)
+       @foreach($subsections as $subsection => $methods)
+       <?php 
+       $sub = Subsection::where("ssname", "=", $subsection)->first();  
+       $r = $sub->r;
+       $g = $sub->g;
+       $b = $sub->b;
+       $str = '"color:rgb('.$r.','.$g.','.$b.')"';
+       ?>
+       <ul style={{$str}}><b>{{$section}}</b>
+        <ul>{{$subsection}}
+         @foreach($methods as $method)
+         <li>
+           {{Form::checkbox('checked[]', $method->mid)}}{{$method->mname}}<br>
+         </li>
+         @endforeach
+       </ul>
      </ul>
-   </ul>
-   @endforeach
-   @endforeach
+     @endforeach
+     @endforeach
  </ul>
 
  <br>
@@ -59,7 +59,7 @@
   <select name="methods" id = 'meth' class="selectpicker" data-live-search="true">
     @foreach($arr as $section => $subsections)
     @foreach($subsections as $subsection => $methods)
-    <optgroup label = {{$subsection}}>
+    <optgroup label = {{$subsection}}></optgroup>
      @foreach($methods as $method)
      <option value={{$method->mid}}>{{$method->mname}}</option>
      @endforeach    
