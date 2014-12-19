@@ -56,7 +56,7 @@
             <h4 class="modal-title" id="myModalLabel">Download {{$contents['text']}}</h4>
           </div>
           <div class="modal-body">
-            <p>Description here</p>
+            <p>{{$contents['description']}}</p>
             {{Form::open(array('action' => 'HomeController@showPayment')); }}
             {{Form::hidden('subcatId', $contents['id']) }}
             {{Form::submit('Click here to purchase audio file', array('class' => 'btn btn-link'));}}

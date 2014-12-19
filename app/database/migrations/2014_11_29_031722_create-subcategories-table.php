@@ -17,7 +17,7 @@ class CreateSubcategoriesTable extends Migration {
 			$table->increments('sid');
 
 			$table->string('sname',100);
-
+			$table->string('decription', 5000);
             $table->unsignedInteger('cid');
             $table->foreign('cid')->references('cid')->on('categories');
 

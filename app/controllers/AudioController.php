@@ -63,14 +63,19 @@ class AudioController extends BaseController {
 				echo "<script>alert('Uploaded');</script>";	
 				$mid = Input::get('methods');
 				Input::file('audio')->move('methods/', 'method'.$mid.'.mp3');
+				$request = Request::create('admin', 'POST', array());
+      			return Route::dispatch($request)->getContent();
 			}
 			else{
 				echo "<script>alert('Please upload mp3 files only.');</script>";
-
+				$request = Request::create('selection', 'POST', array());
+      			return Route::dispatch($request)->getContent();
 			}	
 		}
 		else{
-			echo "<script>alert('You did not choose any file!');</script>";	
+			echo "<script>alert('You did not choose any file!');</script>";
+			$request = Request::create('selection', 'POST', array());
+      		return Route::dispatch($request)->getContent();	
 		}
 	}
 
@@ -108,6 +113,7 @@ class AudioController extends BaseController {
 			$subcat = new Subcategory;
 			$subcat->sname = Input::get('subcatName');
 			$subcat->cid = Input::get('categories');
+			$subcat->description = Input::get('subcatDescript');
 			$subcat->save();
 
 			$sid = Subcategory::where('sname','=', Input::get('subcatName'))->first()->sid;

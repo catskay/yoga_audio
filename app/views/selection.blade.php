@@ -44,8 +44,12 @@
 <br>
 <br>
 <p><b>Please enter a name for the new subcategory: </b></p>
-{{ Form::textarea('subcatName', null, ['placeholder' => 'subcategory name', 'size'=>'50x1']) }}
+{{ Form::textarea('subcatName', null, ['placeholder' => 'subcategory name', 'size'=>'50x1', 'required']) }}
 {{Form::hidden('submitted', 'true')}}
+<br>
+<br>
+<p><b>Please enter a description for the new subcategory: </b></p>
+{{Form::textarea('subcatDescript', null, ['placeholder' => 'subcategory description', 'size'=>'50x5', 'required']) }}
 <br>
 <br>
 {{Form::submit('Merge', array('class' => 'btn btn-danger')) }}

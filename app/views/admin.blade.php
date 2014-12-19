@@ -77,7 +77,7 @@
         <br>
         {{Form::open(array('action'=>'HomeController@showAdmin'))}}
         <p><b>Please enter a name for the new category: </b></p>
-        {{ Form::textarea('catName', null, ['placeholder' => 'category name', 'size'=>'50x1']) }}
+        {{ Form::textarea('catName', null, ['placeholder' => 'category name', 'size'=>'50x1', 'required']) }}
         {{Form::submit('Add',['class'=>'btn btn-link'])}}
         {{Form::close()}}
 
