@@ -118,6 +118,7 @@ class AudioController extends BaseController {
 
 			$sid = Subcategory::where('sname','=', Input::get('subcatName'))->first()->sid;
 			echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:".$dir."' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/subcat".$sid.".mp3");
+			echo shell_exec("/usr/local/bin/ffmpeg -ss 0 -i /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/subcat".$sid.".mp3"." -t 30 /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/30subcat".$sid.".mp3");
 			// file is named in format: 'subcat1.mp3', where 1 is the sid of the subcategory.
 		}
 		$subcat = array();

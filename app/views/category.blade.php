@@ -40,7 +40,7 @@
     @foreach($categories as $cat)
 
         @foreach($subcategories[$cat->cid] as $subcat)
-          <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname, 'id' => $subcat->sid)); ?>
+          <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname, 'id' => $subcat->sid, 'description' => $subcat->description)); ?>
         @endforeach
 
     @endforeach
@@ -63,7 +63,7 @@
             {{Form::close() }}
 
             <audio controls id="script"> 
-                  <source src={{"audio/"}} >
+                  <source src={{"audio/30subcat".$contents['id'].".mp3"}} >
                   Your browser does not support the audio tag.
             </audio>
           </div>
