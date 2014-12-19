@@ -2,7 +2,8 @@
 
 use Illuminate\Support\MessageBag;
 
-class HomeController extends BaseController {
+class HomeController extends BaseController 
+{
 
 
 	/*
@@ -186,11 +187,11 @@ class HomeController extends BaseController {
 	{
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
-		if(!Auth::check()){
+		if(!Auth::check()) {
 			$request = Request::create('payment', 'GET', array());
 			return Route::dispatch($request)->getContent();
 		}
-		else{
+		else {
 			$exp = new Experience;
 			$exp->uid = Auth::user()->uid;
 			$exp->sid = Session::get('subcatId');
