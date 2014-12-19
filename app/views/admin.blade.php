@@ -11,7 +11,7 @@
 
   <div class="page-container">
     <div class="row">
-      <a href = "selection"><button class="btn btn-red" style="float:right">Add new subcategory</button></a>
+      <a href = "selection"><button class="btn btn-red" style="float:right">Create new audio file</button></a>
       <br><br>
     </div>
     <div class="row">
@@ -88,7 +88,7 @@
          <option value={{$cat->cid}}>{{$cat->cname}}</option>
          @endforeach    
        </select>
-        <a href="#myModal" data-toggle="modal" class="btn btn-link">Delete</a>
+        <a href="#myModal" data-toggle="modal" class="btn btn-link" onClick="render()">Delete</a>
 
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -96,7 +96,11 @@
               <div class="modal-header">
               </div>
               <div class="modal-body">
-                <h4>Are you sure you want to delete {{$cat->cname}}?</h4>
+                <div class="panel-centered2">
+                  <textInline>Are you sure you want to delete</textInline>
+                  <textInline name="toDelete"></textInline>
+                  <textInline>?</textInline>
+                </div>
               </div>
               <div class="modal-footer">
                 {{Form::submit('Yes',['class'=>'btn btn-danger','style'=>'float:left'])}}
@@ -114,4 +118,15 @@
 
 
 @stop
+
+<script>
+  function render(){
+    var toDelete = document.getElementsByName("toDelete");
+    var e = document.getElementById("cat");
+    var strCat = e.options[e.selectedIndex].text;
+    toDelete[0].innerHTML = strCat;
+  }
+</script>
+
+
 

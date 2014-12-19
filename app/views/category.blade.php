@@ -61,6 +61,11 @@
             {{Form::hidden('subcatId', $contents['id']) }}
             {{Form::submit('Click here to purchase audio file', array('class' => 'btn btn-link'));}}
             {{Form::close() }}
+
+            <audio controls id="script"> 
+                  <source src={{"audio/"}} >
+                  Your browser does not support the audio tag.
+            </audio>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

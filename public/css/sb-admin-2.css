@@ -481,3 +481,14 @@ table.dataTable thead .sorting:after {
     padding-left:15px;
 }
 
+.panel-centered2{
+    background-color: transparent;
+    text-align: center;
+    vertical-align: text-bottom;
+    font-weight:500;
+    font-size: 18px;
+}
+.textInline{
+    display: inline;
+}
+

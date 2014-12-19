@@ -82,7 +82,6 @@ class HomeController extends BaseController {
 	 * checkout, login, or register.  Also returns an eloquent object
 	 * named 'subcat' which contains the subcategory that the user
 	 * selected on the previous page (category.blade.php)
-
 	 * @return subcat
 	 */
 
