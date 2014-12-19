@@ -14,10 +14,12 @@ class CreateSubcategoriesTable extends Migration {
 	{
 		Schema::create('subcategories', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
+			
 			$table->increments('sid');
 
 			$table->string('sname',100);
-			$table->string('decription', 5000);
+			$table->string('description', 5000);
             $table->unsignedInteger('cid');
             $table->foreign('cid')->references('cid')->on('categories');
 

@@ -14,6 +14,8 @@ class CreateExperiencesTable extends Migration {
 	{
 		Schema::create('experiences', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
+			
 			$table->increments('eid');
 
 			$table->string('ename',100);

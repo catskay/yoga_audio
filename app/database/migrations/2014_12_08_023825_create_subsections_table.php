@@ -14,6 +14,8 @@ class CreateSubsectionsTable extends Migration {
 	{
 		Schema::create('subsections', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
+			
 			$table->increments('ssid');
                         
             $table->string('ssname', 100);

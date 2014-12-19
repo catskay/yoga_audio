@@ -58,13 +58,10 @@ class MasterSeeder extends Seeder
 				$text = $text.$next;
 				$next = $this->nextLine($file);
 			}
-			if($mcount === 1 || $mcount === 3 || $mcount === 7 || $mcount === 10 || $mcount === 19 || $mcount === 20 || $mcount === 23 || $mcount === 24 || $mcount === 25 || $mcount === 26 || $mcount === 27){
-				$editable = 'true';
-			}
-			else{
-				$editable = 'false';
-			}
-			Method::create(array('mname'=>$mname,'ssid' => $currSSid,'text'=>$text, 'editable'=>$editable));
+			
+			Method::create(array('mname'=>$mname,'ssid' => $currSSid,'text'=>$text));
+			Method::create(array('mname'=>$mname.' for kids','ssid' => $currSSid,'text'=>$text));
+
 			$mcount++;
 			$text = "";
 			$next = $this->nextLine($file);

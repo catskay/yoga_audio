@@ -14,6 +14,8 @@ class CreateSectionsTable extends Migration {
 	{
 		Schema::create('sections', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
+			
 			$table->increments('sid');
                         
             $table->string('sname', 100);
