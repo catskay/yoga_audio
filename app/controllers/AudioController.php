@@ -2,6 +2,9 @@
 
 class AudioController extends BaseController {
 
+	//path to ffmpeg
+	private $ffmpeg_path = "/usr/local/bin/ffmpeg";
+
 
 	/**
 	 * for admin site.  If admin user creates a new subcategory, they
@@ -101,11 +104,12 @@ class AudioController extends BaseController {
 			$dir = "";
 			for ($i = 0; $i < count($checkedMs); $i++){
 				if($i === count($checkedMs) - 1){
-					$dir .= "/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/methods/method".$checkedMs[$i].".mp3";
+					$dir .= "methods/method".$checkedMs[$i].".mp3";
 					// file is named in format: 'method1.mp3', where 1 is the mid of the method.
 				}
 				else{
-					$dir .= "/Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/methods/method".$checkedMs[$i].".mp3|";
+					$dir .= "methods/method".$checkedMs[$i].".mp3|";
+
 				}
 			}
 
@@ -117,8 +121,9 @@ class AudioController extends BaseController {
 			$subcat->save();
 
 			$sid = Subcategory::where('sname','=', Input::get('subcatName'))->first()->sid;
-			echo shell_exec("/usr/local/bin/ffmpeg -i 'concat:".$dir."' -acodec copy /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/subcat".$sid.".mp3");
-			echo shell_exec("/usr/local/bin/ffmpeg -ss 0 -i /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/subcat".$sid.".mp3"." -t 30 /Applications/MAMP/htdocs/yoga_audio/yoga_audio/public/audio/30subcat".$sid.".mp3");
+
+			echo shell_exec($this->ffmpeg_path." -i 'concat:".$dir."' -acodec copy audio/subcat".$sid.".mp3");
+			echo shell_exec($this->ffmpeg_path." -ss 0 -i audio/subcat".$sid.".mp3"." -t 30 audio/30subcat".$sid.".mp3");
 			// file is named in format: 'subcat1.mp3', where 1 is the sid of the subcategory.
 		}
 		$subcat = array();

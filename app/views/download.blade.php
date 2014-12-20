@@ -1,9 +1,11 @@
-@extends('layout.master')
+@extends('layout.dashboardlayout')
 
 @section('content')
 
 <div class="page-container">
+
 	<div class="row">
+		<a href = "dashboard"><button class = "btn btn-default btn-lg" type = "button">View Dashboard</button></a>
 		<div class="panel-centered">
 			<h4>Thank you! Click the button below to download your file. </h4>
 			<p>{{ $subcat->sname }}</p>

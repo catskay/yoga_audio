@@ -72,6 +72,11 @@ class HomeController extends BaseController
 		if(Auth::check()){
 			$experiences = Experience::where('uid','=',Auth::user()->uid)->get();
 		}
+		if(Input::get('actions') === "Download"){
+			$subcatid = Input::get('subcatid');
+			$pathToFile = 'audio/subcat'.$subcatid.'.mp3';
+			return Response::download($pathToFile);
+		}
 
 		return View::make('dashboard')->with('experiences',$experiences);
 	}
@@ -94,6 +99,10 @@ class HomeController extends BaseController
 
 		$subcat = Subcategory::where('sid','=',Session::get('subcatId'))->first();
 
+		if(Auth::check()){
+			$request = Request::create('payment-loggedin', 'GET', array());
+			return Route::dispatch($request)->getContent();
+		}
 		return View::make('payment')->with('subcat',$subcat);
 	}
 
@@ -219,13 +228,13 @@ class HomeController extends BaseController
 		if(Input::get('submit')==='Login'){
 			
 		// validate the info, create rules for the inputs
-		$rules = array(
+			$rules = array(
 			'email'    => 'required|email', // make sure the email is an actual email
 			'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
 			);
 
 		// run the validation rules on the inputs from the form
-		$validator = Validator::make(Input::all(), $rules);
+			$validator = Validator::make(Input::all(), $rules);
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
@@ -244,24 +253,24 @@ class HomeController extends BaseController
 		} else {
 			// create our user data for the authentication
 			$userdata = array(
-				'email' 	=> Input::get('email'),
-						'password' 	=> Input::get('password')
-						);
+					'email' 	=> Input::get('email'),
+					'password' 	=> Input::get('password')
+					);
 
 			// attempt to do the login
-					if (Auth::attempt($userdata)) {
+				if (Auth::attempt($userdata)) {
 
 				// validation successful!
 				// redirect them to the secure section or whatever
 				// return Redirect::to('secure');
-						if(Input::get('from')==='home'){
-							return Redirect::to('dashboard');
-						}
-						else{
-							return Redirect::to('payment-loggedin')->with('subcat',$subcat);
-						}
+					if(Input::get('from')==='home'){
+						return Redirect::to('dashboard');
+					}
+					else{
+						return Redirect::to('payment-loggedin')->with('subcat',$subcat);
+					}
 
-					} else {	 	
+				} else {	 	
 
 				// validation not successful, send back to form	
 						$errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
@@ -277,21 +286,23 @@ class HomeController extends BaseController
 				}
 
 			}
-			else{
-				if($this->register()){
-					return Redirect::to('payment-registered')->with('subcat',$subcat);
-				}
-				else{
-					return Redirect::to('payment')->with('subcat',$subcat);
-				}
-			}
-				
+
 		}
+		else{
+			if($this->register()){
+				return Redirect::to('payment-registered')->with('subcat',$subcat);
+			}
+			else{
+				return Redirect::to('payment')->with('subcat',$subcat);
+			}
+		}
+
+	}
 
 
 		// logs the user out.
 
-		public function doLogout(){
+	public function doLogout(){
 			Auth::logout(); // log the user out of our application
 			Session::flush();
 			return Redirect::to('home'); // redirect the user to the login screen
@@ -311,9 +322,9 @@ class HomeController extends BaseController
 
 			// validate the info, create rules for the inputs
 			$rules = array(
-			'regEmail' => 'required|email',
-			'regPass' => 'required|alphaNum|min:3'
-			);
+				'regEmail' => 'required|email',
+				'regPass' => 'required|alphaNum|min:3'
+				);
 
 		// run the validation rules on the inputs from the form
 			$validator = Validator::make(Input::all(), $rules);
