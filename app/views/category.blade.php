@@ -29,9 +29,9 @@
 
       <div id={{"collapse".$cat->cid}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"heading".$cat->cid}}>
         <div class="panel-body">
-            @foreach($subcategories[$cat->cid] as $subcat)
-              <p>{{$subcat->sname}} <a href={{"#subcat".$subcat->sid}} role="button" class="btn" data-toggle="modal">Download</a></p>
-            @endforeach
+          @foreach($subcategories[$cat->cid] as $subcat)
+          <p>{{$subcat->sname}} <a href={{"#subcat".$subcat->sid}} role="button" class="btn" data-toggle="modal">Download</a></p>
+          @endforeach
         </div>
       </div>
       
@@ -43,9 +43,9 @@
 
     @foreach($categories as $cat)
 
-        @foreach($subcategories[$cat->cid] as $subcat)
-          <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname, 'id' => $subcat->sid, 'description' => $subcat->description)); ?>
-        @endforeach
+    @foreach($subcategories[$cat->cid] as $subcat)
+    <?php array_push($arr,array('name'=>"subcat".$subcat->sid,'text'=>$subcat->sname, 'id' => $subcat->sid, 'description' => $subcat->description)); ?>
+    @endforeach
 
     @endforeach
 
@@ -66,29 +66,32 @@
             {{Form::submit('Click here to purchase audio file', array('class' => 'btn btn-link'));}}
             {{Form::close() }}
 
-            <audio controls id="script"> 
-                  <source src={{"audio/30subcat".$contents['id'].".mp3"}} >
-                  Your browser does not support the audio tag.
-            </audio>
-          </div>
-          <div class="modal-footer">
-            <button type="button" onclick= "pauseAudio()" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <audio controls name="scripts"> 
+              <source src={{"audio/subcat".$contents['id'].".mp3"}} >
+
+                Your browser does not support the audio tag.
+              </audio>
+            </div>
+            <div class="modal-footer">
+              <button type="button" onclick= "pauseAudio()" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>
+      @endforeach
     </div>
-    @endforeach
   </div>
-</div>
 
+  <script> 
+    function pauseAudio() { 
+     var aud = document.getElementsByName("scripts"); 
+     var i;
+     for(i = 0; i < aud.length;i++){
+        aud[i].pause(); 
+        aud[i].currentTime = 0;
+      }
+    } 
+  </script> 
 
 @stop
 
-<script> 
-var aud = document.getElementById("script"); 
-
-function pauseAudio() { 
-    script.pause(); 
-    script.currentTime = 0;
-} 
-</script> 

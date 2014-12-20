@@ -75,8 +75,8 @@
 var aud = document.getElementById("script"); 
 
 function pauseAudio() { 
-    script.pause(); 
-    script.currentTime = 0;
+    aud.pause(); 
+    aud.currentTime = 0;
 } 
 </script> 
 
