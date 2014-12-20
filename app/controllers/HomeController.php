@@ -287,7 +287,6 @@ class HomeController extends BaseController
 
 			}
 
-		}
 		else{
 			if($this->register()){
 				return Redirect::to('payment-registered')->with('subcat',$subcat);
