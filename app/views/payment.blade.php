@@ -69,11 +69,6 @@
 				<p style="float:right">{{ $subcat->sname }}</p>
                 <br><br>
                 <p style="float:right"><b>Total: </b> $5.00</p>
-                <br><br>
-                {{Form::open(array('action' => 'HomeController@showDownload')); }}
-                {{Form::submit('Checkout', array('class' => 'btn btn-red'));}}
-                {{Form::close()}}
-                <br>
 			</div>
 		</div>
     </div>
