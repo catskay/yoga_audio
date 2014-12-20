@@ -1,4 +1,8 @@
-@extends('layout.master')
+@if(Auth::check())
+  @extends('layout.dashboardlayout')
+@else
+  @extends('layout.master')
+@endif  
 
 @section('content')
 

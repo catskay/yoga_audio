@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.dashboardlayout')
 
 @section('content')
 <div id="page-wrapper">
